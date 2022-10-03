@@ -1,0 +1,115 @@
+{%- assign collection = collections[section.settings.collection] -%}
+{%- assign product_limit = section.settings.grid | times: section.settings.rows -%}
+<div class="blog-sidebar">
+                    <div class="blog-search">
+                        <h4>Search</h4>
+                     <form method="get" action="/search" class="blog-form">
+                        <input type="hidden" name="type" placeholder="Search For Posts" value="article" />
+                        <input type="text" name="q" />
+<!--                         <input  type="submit" value="Search" /> -->
+                       <button type="submit" value="Search"><i class="fas fa-search"></i></button>
+                       
+                    </form>
+                    </div>
+                    <div class="blog-category">
+                      <h4>Categories</h4>
+                      <div class="blog-category-list">
+                        <a href="{{ blog.url }}{{ category | handle }}" class="cat-list-item">{{ blog.title | escape }}</a>
+                      </div>
+                    </div>
+                    
+                    <div class="recent-post">
+        <h4>Recent Post</h4>
+        {% for article in blog.articles limit:3 %}
+        <div class="recent-post-list">
+                            <div class="recent-post-img">
+                                <a href="{{ article.url }}"><img
+                srcset="{%- if article.image.src.width >= 165 -%}{{ article.image.src | img_url: '165x' }} 165w,{%- endif -%}
+                  {%- if article.image.src.width >= 360 -%}{{ article.image.src | img_url: '360x' }} 360w,{%- endif -%}
+                  {%- if article.image.src.width >= 533 -%}{{ article.image.src | img_url: '533x' }} 533w,{%- endif -%}
+                  {%- if article.image.src.width >= 720 -%}{{ article.image.src | img_url: '720x' }} 720w,{%- endif -%}
+                  {%- if article.image.src.width >= 1000 -%}{{ article.image.src | img_url: '1000x' }} 1000w,{%- endif -%}
+                  {%- if article.image.src.width >= 1500 -%}{{ article.image.src | img_url: '1500x' }} 1500w,{%- endif -%}
+                  {{ article.image.src | img_url: 'master' }} {{ article.image.src.width }}w"
+                src="{{ article.image.src | img_url: '533x' }}"
+                sizes="(min-width: {{ settings.page_width }}px) {{ settings.page_width | minus: 100 | divided_by: 2 }}px, (min-width: 750px) calc((100vw - 130px) / 2), calc((100vw - 50px) / 2)"
+                alt="{{ article.image.src.alt | escape }}"
+                class="motion-reduce"
+                {% unless lazy_load == false %}loading="lazy"{% endunless %}
+                width="{{ article.image.width }}"
+                                                                 height="{{ article.image.height }}"></a>
+                            </div>
+                            <div class="recent-post-text">
+                                <h5><a href="{{ article.url }}">{{ article.title }}</a></h5>
+                                <p>{{ article.published_at | time_tag: format: 'date' }}</p>
+                            </div>
+                        </div>
+        {% endfor %}
+        <h2>{{ product.title }}</h2>
+      </div>
+  <div class="recent-post">
+                        <h4>Sale Product</h4>
+    
+                        {% for product in collections.all.products %} 
+                        {% for tag in product.tags %}
+                        {% if tag == 'best-seller' %}
+
+
+                          <div class="recent-post-list">
+                              <div class="recent-post-img">
+                                <a href="{{ product.url }}"><img src="{{ product | img_url: "original" }}" alt=""></a>
+                              </div>
+                              <div class="recent-post-text">
+                                 <h5><a href="{{ product.url }}"> {{ product.title }}</a></h5>
+                                 <p>{{ product.published_at | time_tag: format: 'date' }}</p>
+							  </div>
+                          </div>
+
+                       {%- endif -%}
+                       {% endfor %}
+                       {% endfor %}
+                       
+                    </div>
+                      <div class="offer-product">
+                        <h4>Offer Product</h4>
+                        <div class="offer-product-list">
+                            {% for product in collections.all.products %} 
+                            {% for tag in product.tags %}
+                            {% if tag == 'spacial-offer' %}
+                              <div class="offer-product-item">
+                                <a href="{{ product.url }}"><img src="{{ product | img_url: "original" }}" alt=""></a>
+                                <h5><a href="{{ product.url }}"> {{ product.title }}</a></h5>
+                               {% comment %}  {% render 'product-price'%}{% endcomment %}
+                                
+                              </div>
+                           {%- endif -%}
+                            {% endfor %}
+                            {% endfor %}
+                        </div>
+                    </div>
+                    <div class="follow-blog-post">
+                        <h4>Follow</h4>
+                        <div class="follow-blog-item">
+                          	<a class="f-icon-link blog-item-link" target="_blank" rel="noopener" href="//www.facebook.com/sharer.php?u={{ permalinkURL }}"><i class="fab fa-facebook-f"></i></a>
+                        	<a class="i-icon-link blog-item-link" target="_blank" href="//pinterest.com/pin/create/button/?url={{ permalinkURL }}&amp;media=http:{% if request.page_type == 'product' %}{{ product | img_url: '1024x1024' }}{% else %}{{ article | img_url: '1024x1024' }}{% endif %}&amp;description={{ shareTitle }}" class="share-pinterest" title="{{ 'general.social.alt_text.share_on_pinterest' | t }}"><i class="fab fa-pinterest"></i></a>
+                        	<a class="t-icon-link blog-item-link" target="_blank" rel="noopener"  href="//twitter.com/share?url={{ permalinkURL }}&amp;text={{ shareHandle }}"><i class="fab fa-twitter"></i></a>
+                        </div>
+                    </div>
+                    <div class="blog-tag">
+                        <h4>Tags</h4>
+                        <div class="blog-tag-item">
+                          {% comment %}
+                            Blog tag
+                          {% endcomment %}
+                          {% if blog.all_tags.size > 0 %}
+                            {% for tag in blog.all_tags %}
+                          <a href="{{ blog.url }}/tagged/{{ tag | handle }}" class="blog-tag-link">{{ tag }}</a>
+                              
+                            {% endfor %}
+
+                          {% endif %}
+                        </div>
+                    </div>
+                </div>
+
+

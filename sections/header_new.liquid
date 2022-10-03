@@ -1,0 +1,896 @@
+<link rel="stylesheet" href="{{ 'ninja-component-list-menu.css' | asset_url }}" media="print" onload="this.media='all'">
+<link rel="stylesheet" href="{{ 'ninja-component-search.css' | asset_url }}" media="print" onload="this.media='all'">
+<link rel="stylesheet" href="{{ 'ninja-component-menu-drawer.css' | asset_url }}" media="print" onload="this.media='all'">
+<link rel="stylesheet" href="{{ 'ninja-component-cart-notification.css' | asset_url }}" media="print" onload="this.media='all'">
+<link rel="stylesheet" href="{{ 'ninja-component-cart-items.css' | asset_url }}" media="print" onload="this.media='all'">
+{%- if settings.predictive_search_enabled -%}
+  <link rel="stylesheet" href="{{ 'ninja-component-price.css' | asset_url }}" media="print" onload="this.media='all'">
+  <link rel="stylesheet" href="{{ 'ninja-component-loading-overlay.css' | asset_url }}" media="print" onload="this.media='all'">
+{%- endif -%}
+
+<noscript>{{ 'ninja-component-list-menu.css' | asset_url | stylesheet_tag }}</noscript>
+<noscript>{{ 'ninja-component-search.css' | asset_url | stylesheet_tag }}</noscript>
+<noscript>{{ 'ninja-component-menu-drawer.css' | asset_url | stylesheet_tag }}</noscript>
+<noscript>{{ 'ninja-component-cart-notification.css' | asset_url | stylesheet_tag }}</noscript>
+<noscript>{{ 'ninja-component-cart-items.css' | asset_url | stylesheet_tag }}</noscript>
+
+{{ 'header.css' | asset_url | stylesheet_tag }}
+<script src="{{ 'ninja-details-disclosure.js' | asset_url }}" defer="defer"></script>
+<script src="{{ 'ninja-details-modal.js' | asset_url }}" defer="defer"></script>
+<script src="{{ 'ninja-cart-notification.js' | asset_url }}" defer="defer"></script>
+
+{%- liquid
+
+  if settings.cart_type == 'drawer'
+    assign cart_classes = 'js-slideout-open'
+    assign cart_settings = 'data-wau-slideout-target="ajax-cart" data-slideout-direction="right"'
+  elsif settings.cart_type == 'modal_cart'
+    assign cart_classes = 'js-modal-open'
+    assign cart_settings = 'data-wau-modal-target="ajax-cart"'
+  endif
+
+-%}
+{% comment %}
+{% capture search %}
+{%- if settings.predictive_search_enabled -%}
+<predictive-search
+  data-routes="{{ routes.predictive_search_url | default: '/search/suggest' }}"
+  data-show-only-products="{{ settings.search_show_products_only | default: 'false' }}"
+  data-results-per-resource="6"
+  data-input-selector='input[name="q"]'
+  data-results-selector="#predictive-search"
+  >
+{%- endif -%}
+  <form action="{{ routes.search_url }}" method="get" class="header-search-form">
+    <input
+      type="text"
+      class="header-search"
+      name="q"
+      id="header-search"
+      placeholder="{{ 'general.search.placeholder' | t }}"
+      value="{{ search.terms | escape }}"
+      {%- if settings.predictive_search_enabled -%}
+        role="combobox"
+        aria-expanded="false"
+        aria-owns="predictive-search-results-list"
+        aria-controls="predictive-search-results-list"
+        aria-haspopup="listbox"
+        aria-autocomplete="list"
+        autocorrect="off"
+        autocomplete="off"
+        autocapitalize="off"
+        spellcheck="false"
+      {%- endif -%} />
+    <button type="submit" class="search-button">
+      {% render 'snip-icons',
+         wrapper: '.slideout__trigger-search',
+         type: 'apollo',
+         icon: 'search',
+         classes: 'vib-center',
+         size: '14px',
+         fill: 'var(--cart-links)',
+         hover: 'var(--cart-links)' %}
+    </button>
+    <input name="options[prefix]" type="hidden" value="last">
+
+    {% if settings.search_show_products_only %}
+      <input type="hidden" name="type" value="product">
+    {% endif %}
+
+    {%- if settings.predictive_search_enabled -%}
+      <div id="predictive-search" class="predictive-search" tabindex="-1"></div>
+    {%- endif -%}
+  </form>
+{%- if settings.predictive_search_enabled -%}
+</predictive-search>
+{%- endif -%}
+{% endcapture %}
+{% endcomment %}
+<div class="header-section js-header-section" data-section-id="{{ section.id }}" data-section-type="header-section">
+  <header data-sticky-class="header--sticky" class="theme-header{% if section.settings.header_layout == 'inline' %} stickynav{% endif %}{% if section.settings.full_width_header %} gridlock-fluid{% endif %}">
+    {% if section.settings.full_width_header %}<div class="row">{% endif %}
+	<div class="container">
+    <div id="identity">
+	{% comment %}
+      <div class="mobile-menu__trigger mobile-only span-1">
+        <div class="slideout__trigger--open text-left">
+          <button class="slideout__trigger-mobile-menu js-slideout-open text-left" data-wau-slideout-target="mobile-navigation" data-slideout-direction="left" aria-label="Open navigation" tabindex="0" type="button" name="button">
+            {% render 'snip-icons',
+               wrapper: '.slideout__trigger-mobile-menu',
+               type: 'apollo',
+               icon: 'menu-bars',
+               classes: 'slideout__trigger-mobile-menu--icon vib-center',
+               size: '16px',
+               fill: 'var(--cart-links)',
+               hover: 'var(--cart-links)' %}
+          </button>
+        </div>
+      </div>
+	
+      {% if section.settings.search_layout == 'visible' and section.settings.header_layout == 'center' %}
+        <div class="large-search desktop-4">
+          {{ search }}
+        </div>
+      {% endif %}
+      {% endcomment %}
+
+      <div id="logo" class="{% if section.settings.header_layout == 'center' %}desktop-4 {% if section.settings.search_layout != 'visible' %}desktop-push-4 {% endif %}{% elsif section.settings.header_layout == 'left' %}desktop-4 {% endif %}">
+        {% if section.settings.logo != blank %}
+          <a class="logo" href="{{ routes.root_url }}">
+            <img src="{{ section.settings.logo | img_url: '600x' }}" alt="{{ section.settings.logo.alt | default: shop.name }}" itemprop="logo">
+          </a>
+        {% else %}
+          <a href="{{ routes.root_url }}">{{ shop.name }}</a>
+        {% endif %}
+      </div>
+      
+      
+      
+	{% comment %}
+      {% if section.settings.search_layout == 'visible' and section.settings.header_layout == 'left' %}
+        <div class="large-search desktop-4">
+          {{ search }}
+        </div>
+      {% endif %}
+      {% endcomment %}
+
+      {% if section.settings.header_layout == 'inline' %}
+				<nav class="navigation purple-ninja-navigation inline-header js-nav" data-sticky-class="navigation--sticky">
+					<div id="navigation" class="navigation__maincontainer" >
+						<ul id="nav" class="purple-ninja-nav">
+							{% render 'navigation' %}
+						</ul>
+					</div>
+				</nav>
+      {% endif %}
+
+      
+      
+      
+      <div id="cart-container" class="{% unless section.settings.header_layout == 'inline' %}desktop-4{% endunless %}{% if section.settings.search_layout != 'visible' and section.settings.header_layout == 'left' %} desktop-push-4{% endif %}">
+        <ul id="cart1">
+          <li class="search-icon">
+            <div class="right-main-header">
+                         <div class="right-main-header-content">
+                           
+                           
+                      	<form action="{{ routes.search_url }}" method="get" role="search" class="search search-modal__form">
+                            <div class="field">
+                              <input type="hidden" name="options[prefix]" value="last">
+                              <a href="#" class="search-btn modal-link"><i class="fas fa-search"></i></a>
+                            </div>
+                        </form>
+                             
+                         </div>
+                         
+                     </div>
+          </li>
+	{% comment %}
+            {% if customer  %}
+              <li class="cart-links__link-account customer-accounts">
+                <a href="{{ routes.account_url }}">
+<!--                   <span class="customer-words vib-center">{{ 'layout.customer.my_account' | t }}</span> -->
+                  {% render 'snip-icons',
+                     wrapper: '.cart-links__link-account',
+                     type: 'apollo',
+                     icon: 'user',
+                     classes: 'cart-links__link-account--icon vib-center',
+                     size: '16px',
+                     fill: 'var(--cart-links)',
+                     hover: 'var(--cart-links)' %}
+                </a>
+              </li>
+              <li class="cart-links__link-account customer-accounts">
+                <a href="{{ routes.account_logout_url }}">
+<!--                   <span class="customer-words vib-center">{{ 'layout.customer.log_out' | t }}</span> -->
+                  {% render 'snip-icons',
+                     wrapper: '.cart-links__link-account',
+                     type: 'apollo',
+                     icon: 'user-logout',
+                     classes: 'cart-links__link-account--icon vib-center',
+                     size: '16px',
+                     fill: 'var(--cart-links)',
+                     hover: 'var(--cart-links)' %}
+                </a>
+              </li>
+            {% else %}
+              <li class="cart-links__link-account customer-accounts">
+                <a href="{{ routes.account_login_url }}">
+<!--                   <span class="customer-words vib-center">{{ 'layout.customer.my_account' | t }}</span> -->
+                  {% render 'snip-icons',
+                     wrapper: '.cart-links__link-account',
+                     type: 'apollo',
+                     icon: 'user',
+                     classes: 'cart-links__link-account--icon vib-center',
+                     size: '16px',
+                     fill: 'var(--cart-links)',
+                     hover: 'var(--cart-links)' %}
+                </a>
+              </li>
+            {% endif %}
+				{% endcomment %}
+          {% if settings.cart_type == 'page_only' %}
+            <li class="cart-links__link-cart my-cart-link-container">
+              <a href="{{ routes.cart_url }}" class="header__icon header__icon--cart link focus-inset" id="cart-icon-bubble">
+<!--              <a href="#" class="header__icon header__icon--cart link focus-inset" id="cart-icon-bubble" data-drawer-trigger aria-controls="drawer-name" aria-expanded="false" > -->
+                {%- liquid
+                  if cart == empty
+                    render 'icon-cart-empty'
+                  else
+                    render 'icon-cart'
+                  endif
+                -%}
+                <span class="visually-hidden">{{ 'templates.cart.cart' | t }}</span>
+                {%- if cart != empty -%}
+                  <div class="cart-count-bubble">
+                    {%- if cart.item_count < 100 -%}
+                      <span aria-hidden="true">{{ cart.item_count }}</span>
+                    {%- endif -%}
+                    <span class="visually-hidden">{{ 'sections.header.cart_count' | t: count: cart.item_count }}</span>
+                  </div>
+                {%- endif -%}
+              </a>
+            </li>
+          {% else %}
+            <li class="cart-links__link-cart my-cart-link-container">
+              <div class="slideout__trigger--open">
+                <a href="{{ routes.cart_url }}" class="header__icon header__icon--cart link focus-inset" id="cart-icon-bubble" data-drawer-trigger aria-controls="drawer-name" aria-expanded="false" >
+        {%- liquid
+          if cart == empty
+            render 'icon-cart-empty'
+          else
+            render 'icon-cart'
+          endif
+        -%}
+        <span class="visually-hidden">{{ 'templates.cart.cart' | t }}</span>
+        {%- if cart != empty -%}
+          <div class="cart-count-bubble">
+            {%- if cart.item_count < 100 -%}
+              <span aria-hidden="true">{{ cart.item_count }}</span>
+            {%- endif -%}
+            <span class="visually-hidden">{{ 'sections.header.cart_count' | t: count: cart.item_count }}</span>
+          </div>
+        {%- endif -%}
+      </a>
+              </div>
+            </li>
+          {% endif %}
+        </ul>
+      </div>
+
+    </div>
+    </div>
+
+    {% if section.settings.full_width_header %}</div>{% endif %}
+  </header>
+  {%- render 'cart-notification', color_scheme: section.settings.color_scheme -%}
+
+  {% if section.settings.header_layout != 'inline' %}
+		<nav id="nav" data-sticky-class="navigation--sticky" class="js-nav purple-ninja-navigation navigation full-nav{% if section.settings.full_width_header %} gridlock-fluid{% endif %} stickynav">
+			{% if section.settings.full_width_header %}<div class="row">{% endif %}
+			<div class="navigation__maincontainer row">
+				<ul class="purple-ninja-nav" id="nav" {% unless section.settings.full_width_header %}style="position: relative;"{% endunless %}>
+					{% render 'navigation' %}
+                  
+				</ul>
+			</div>
+			{% if section.settings.full_width_header %}</div>{% endif %}
+		</nav>
+  {% endif %}
+  
+  
+    <!-- phone -->
+     <div class="mobmenu">
+        <div id="header">
+            <nav class="nav">
+                <a href="/" class="logo">PurpleNinja</a>
+              <button class="toggle-menu">
+                <span></span>
+              </button>
+            </nav>
+        </div>
+          
+          <div id="menu" class="">
+            <nav class="main-nav">
+              <ul class="">
+                           {% for link in linklists.main-menu.links %}
+                            <li><a class="{% if link.active %}active{%endif%}" href="{{ link.url }}">{{ link.title }}</a>
+                           		{% if link.links.size > 0 %}
+        							<ul class="menu dropdown-child">
+          								{% for child_link in link.links %}
+            								<li class="menu-link">
+              									<a href="{{ child_link.url }}">{{ child_link.title }}</a>
+
+                                          {% if child_link.links.size > 0 %}
+                                            <ul class="menu dropdown-grandchild">
+                                              {% for grandchild_link in child_link.links %}
+                                                <li class="menu-link">
+                                                  <a href="{{ grandchild_link.url }}">{{ grandchild_link.title }}</a>
+                                                </li>
+                                              {% endfor %}
+                                            </ul>
+                                          {% endif %}
+            							</li>
+          							{% endfor %}
+        							</ul>
+      							{% endif %}
+                           
+                           </li>
+                           {%endfor%}
+                         </ul>
+              
+              <div class="right-main-header-content">
+                
+                    <form method="get" action="/search">
+                        <input type="text" name="q" />
+                        <input  type="submit" value="Search" />
+                    </form>
+                    </div>   
+            </nav>
+            
+          
+          </div>
+    </div>
+    
+  <style>
+    {% assign new_var = shop.url | append:'/search?q='| append:search.terms %}
+	{% if canonical_url == new_var %}
+    .predictive-search--search-template {display:none!important;}
+    {%endif%}
+.modal1 {
+	    background: #FFF;
+    height: 100%;
+    width: 100%;
+    text-align: center;
+    box-shadow: 5px 5px 5px rgb(0 0 0 / 50%);
+    -moz-box-shadow: 5px 5px 5px rgba(0,0,0,0.5);
+    -webkit-box-shadow: 5px 5px 5px rgb(0 0 0 / 50%);
+    position: fixed;
+        top:0px;
+    left: 0;
+    z-index: 999;
+}
+.search-modal-div{
+    margin-top: 100px;
+}
+  .search-modal-div input{border:1px solid #ddd;}
+.search-modal-div  input:focus{    box-shadow: 0 0 3px rgb(0 0 0 / 20%);}
+.modal1 .search-modal-div .close{
+  position: absolute;
+    top: 30px;
+    right: 30px;
+    font-size: 25px;
+    color: #777;
+  width:40px;
+}
+.modal1 a {
+  line-height: 1em;
+}
+
+                   </style>
+                   <script>
+                   $(document).ready(function(){
+                      $('.modal-link').click(function(){
+                          $('.modal1').show();
+                          $('.modal-bg').show();
+                      });
+                      $('.modal1 .close').click(function(){
+                          $('.modal1').hide();
+                          $('.modal-bg').hide();
+                      })
+                  })
+                   </script>
+  <div class="clear js-clear-element"></div>
+
+  <style>
+    
+    {% if section.settings.logo != blank %}
+      #logo img { max-width: {{ section.settings.logo_max_width }}px; }
+      @media screen and (max-width: 740px) {
+        #logo img { max-width: {{ section.settings.logo_max_width_mobile }}px; }
+      }
+      #logo { line-height: 0;}
+    {% endif %}
+
+    {% if section.settings.header_layout == 'center' %}
+      #logo {
+        text-align: center;
+      }
+    {% endif %}
+
+    nav {
+      {% if section.settings.header_layout == 'center' %}text-align: center;{% endif %}
+      line-height: {{ section.settings.nav_height }}px;
+    }
+
+    {% if section.settings.header_layout == 'center' %}
+      @media screen and ( min-width: 740px ) and ( max-width: 980px ) {
+        ul#social-links {
+          text-align: left;
+          float: left;
+        }
+      }
+    {% endif %}
+
+    {% unless section.settings.header_layout == 'inline' %}
+      #identity {
+        display: flex;
+        align-items: center;
+      }
+    {% endunless %}
+
+    {% if section.settings.header_layout == 'inline' %}
+      header.theme-header.stickynav #identity {
+          display: grid;
+          grid-template-columns: 1fr 2fr 1fr;
+      }
+      header.theme-header.stickynav #identity > div, #identity nav {
+          float: none! important;
+          width: unset !important;
+          margin: 0;
+          align-self: center;
+      }
+      header.theme-header.stickynav #identity #logo {
+          justify-self: start;
+      }
+      header.theme-header.stickynav #identity nav.inline-header {
+          justify-self: stretch;
+      }
+      header.theme-header.stickynav #identity #cart-container {
+          justify-self: end;
+      }
+
+    	@media only screen and (max-width: 980px) {
+    		header.theme-header.stickynav #identity nav.inline-header {
+    			display: none;
+    		}
+
+    		header.theme-header.stickynav #identity #logo,
+    		header.theme-header.stickynav #identity #cart-container,
+    		header.theme-header.stickynav #identity > div{
+    		  justify-self: center;
+    		}
+    	}
+    {% endif %}
+    {% if section.settings.icons_only %}
+      span.customer-words,
+      span.my-cart-text { display: none; }
+    {% endif %}
+    {% if section.settings.search_layout == 'visible' %}
+      ul#predictive-search-results-list {
+          box-shadow: 0px 3px 3px -1px #999;
+      }
+    {% endif %}
+    {% if section.settings.floating_header %}
+      @media screen and (min-width: 981px) {
+
+        /* -- Set header height and lift image sections --*/
+        body.template-index #MainContent .header__overlay-banner:first-child {
+          margin-top: calc(var(--header-height) * -1);
+        }
+
+        /* -- Override theme settings background colors --*/
+        body.template-index .header-section,
+        body.template-index header,
+        body.template-index header:not(.header--sticky),
+        body.template-index .navigation:not(.navigation--sticky) {
+          background: transparent;
+        }
+
+        /* -- Reuse theme settings backgrounds on hover --*/
+        body.template-index .header-section:hover,
+        body.template-index .header-section:hover header,
+        body.template-index header.header--sticky {
+          background: var(--header-background);
+        }
+
+        /* -- Override theme settings link and fill colors --*/
+        body.template-index .header-section header:not(.header--sticky) ul#cart > li a,
+        body.template-index .header-section header:not(.header--sticky) ul#cart > li button,
+        body.template-index .header-section header:not(.header--sticky) button.slideout__trigger-mobile-menu.js-slideout-open,
+        body.template-index .header-section header:not(.header--sticky) #logo a,
+        body.template-index .header-section header:not(.header--sticky) a.navigation__menulink,
+        body.template-index .header-section header:not(.header--sticky) span.js-cart-count,
+        body.template-index .header-section header:not(.header--sticky) a.navigation__menulink,
+        body.template-index .header-section nav.full-nav:not(.navigation--sticky) a.navigation__menulink,
+        body.template-index .header-section input.header-search::-webkit-input-placeholder,
+        body.template-index .header-section input.header-search::placeholder {
+          color: var(--header-float-color);
+        }
+        body.template-index .header-section header:not(.header--sticky) svg g.hover-fill,
+        body.template-index .header-section header:not(.header--sticky) a.navigation__menulink svg g.hover-fill,
+        body.template-index .header-section nav.full-nav:not(.navigation--sticky) a.navigation__menulink svg g.hover-fill {
+          fill: var(--header-float-color);
+        }
+
+        /* -- Reuse theme settings link and fill colors when hovering --*/
+        body.template-index .header-section:hover header ul#cart > li a,
+        body.template-index .header-section:hover header ul#cart > li button,
+        body.template-index .header-section:hover header button.slideout__trigger-mobile-menu.js-slideout-open,
+        body.template-index .header-section:hover header #logo a,
+        body.template-index .header-section:hover header span.js-cart-count,
+        body.template-index .header-section:hover nav.navigation:not(.full-nav) a.navigation__menulink {
+          color: var(--cart-links);
+        }
+        body.template-index .header-section:hover header:not(.header--sticky) svg g.hover-fill,
+        body.template-index .header-section:hover header:not(.header--sticky) a.navigation__menulink svg g.hover-fill {
+          fill: var(--cart-links);
+        }
+
+        body.template-index .header-section:hover input.header-search::-webkit-input-placeholder,
+        body.template-index .header-section:hover input.header-search::placeholder {
+          color: var(--disabled-text);
+        }
+
+        /* -- Reuse theme settings link and fill colors when docked --*/
+        body.template-index .header-section header.header--sticky nav.navigation a.navigation__menulink {
+          color: var(--cart-links);
+        }
+        body.template-index .header-section header.header--sticky nav.navigation a.navigation__menulink svg g.hover-fill {
+          fill: var(--cart-links);
+        }
+
+        /* -- Reuse theme settings link and fill colors when full size nav --*/
+        body.template-index .header-section:hover nav.full-nav:not(.navigation--sticky) {
+          background: var(--navigation);
+        }
+        body.template-index .header-section:hover nav.full-nav:not(.navigation--sticky) a.navigation__menulink {
+          color: var(--nav-color);
+        }
+        body.template-index .header-section:hover nav.full-nav:not(.navigation--sticky) a.navigation__menulink svg g.hover-fill {
+          fill: var(--nav-color);
+        }
+
+        .navigation,
+        .header-section a,
+        .header-section button,
+        .header-section span,
+        .header-section svg g.hover-fill {
+          transition: all .25s ease-in-out;
+        }
+        .header-section a span,
+        .header-section button span {
+          transition: none;
+        }
+
+      }
+    {% endif %}
+
+  </style>
+</div>
+
+
+<div class="modal1" style="display: none;">
+  <div class="container">
+    <div class="search-modal-div">
+      {%- if settings.predictive_search_enabled -%}
+        <predictive-search  open="true" data-loading-text="{{ 'accessibility.loading' | t }}">
+      {%- endif -%}
+        <form action="{{ routes.search_url }}" method="get" role="search" class="search">
+          <div class="field">
+            <input
+              class="search__input field__input"
+              id="Search-In-Template"
+              type="search"
+              name="q"
+              value="{{ search.terms | escape }}"
+              placeholder="{{ 'general.search.search' | t }}"
+              {%- if settings.predictive_search_enabled -%}
+                role="combobox"
+                aria-expanded="false"
+                aria-owns="predictive-search-results-list"
+                aria-controls="predictive-search-results-list"
+                aria-haspopup="listbox"
+                aria-autocomplete="list"
+                autocorrect="off"
+                autocomplete="off"
+                autocapitalize="off"
+                spellcheck="false"
+              {%- endif -%}
+            >
+            <label class="field__label" for="Search-In-Template">{{ 'general.search.search' | t }}</label>
+            <input name="options[prefix]" type="hidden" value="last">
+
+            {%- if settings.predictive_search_enabled -%}
+              <div class="predictive-search predictive-search--search-template" tabindex="-1" data-predictive-search>
+                <div class="predictive-search__loading-state">
+                  <svg aria-hidden="true" focusable="false" role="presentation" class="spinner" viewBox="0 0 66 66" xmlns="http://www.w3.org/2000/svg">
+                    <circle class="path" fill="none" stroke-width="6" cx="33" cy="33" r="30"></circle>
+                  </svg>
+                </div>
+              </div>
+
+              <span class="predictive-search-status visually-hidden" role="status" aria-hidden="true"></span>
+            {%- endif -%}
+
+            <button type="submit" class="search__button field__button" aria-label="{{ 'general.search.search' | t }}">
+              <i class="fas fa-search"></i>
+            </button>
+          </div>
+        </form>
+      {%- if settings.predictive_search_enabled -%}
+        </predictive-search>
+      {%- endif -%}
+      
+	<a href="#" class="close"><i class="fas fa-times"></i></a>
+ 
+
+    </div>
+</div>
+</div>
+
+{% schema %}
+{
+  "name": "Header",
+  "settings": [
+	{
+      "type": "text",
+      "id": "carousel-heading",
+      "label": "Carousel Heading"
+    },
+	{
+      "type": "checkbox",
+      "id": "full_width_header",
+      "label": "Enable full width"
+    },
+    {
+      "type": "select",
+      "id": "header_layout",
+      "label": "Header layout",
+      "options": [{
+          "value": "left",
+          "label": "Logo left, navigation below"
+        },
+        {
+          "value": "center",
+          "label": "Logo center, navigation below"
+        },
+        {
+          "value": "inline",
+          "label": "Logo left, navigation inline"
+        }
+      ]
+    },
+    {
+      "type": "checkbox",
+      "id": "floating_header",
+      "label": "Overlay header on full width image sections",
+      "info":"Puts header on top of the first section if slideshow or image with text overlay has been selected",
+      "default": false
+    },
+    {
+      "type": "header",
+      "content": "Logo"
+    },
+    {
+      "type": "image_picker",
+      "id": "logo",
+      "label": "Logo image"
+    },
+    {
+      "type": "range",
+      "id": "logo_max_width",
+      "min": 80,
+      "max": 300,
+      "step": 5,
+      "unit": "px",
+      "label": "Logo max width",
+      "default": 200
+    },
+    {
+      "type": "range",
+      "id": "logo_max_width_mobile",
+      "min": 80,
+      "max": 200,
+      "step": 5,
+      "unit": "px",
+      "label": "Mobile logo max width",
+      "default": 200
+    },
+    {
+      "type": "header",
+      "content": "Cart links"
+    },
+    {
+      "type": "checkbox",
+      "id": "icons_only",
+      "label": "Show icons only",
+      "default": false
+    },
+    {
+      "type": "select",
+      "id": "search_layout",
+      "label": "Search",
+      "default": "modal",
+      "options": [{
+          "value": "visible",
+          "label": "Always visible (excl inline layout)"
+        },
+        {
+          "value": "modal",
+          "label": "Modal"
+        },
+        {
+          "value": "none",
+          "label": "None"
+        }
+      ]
+    },
+    {
+      "type": "header",
+      "content": "navigation"
+    },
+    {
+      "type": "link_list",
+      "id": "main_nav",
+      "label": "Menu",
+      "default": "main-menu",
+      "info": "It is best practice to select the same menu used in the Mobile Nav. [Learn More](https://developers.google.com/search/mobile-sites/mobile-first-indexing)"
+    },
+    {
+      "type": "range",
+      "id": "nav_height",
+      "min": 30,
+      "max": 100,
+      "step": 2,
+      "unit": "px",
+      "label": "Height",
+      "default": 40
+    },
+    {
+      "type": "range",
+      "id": "linklist_breakpoint",
+      "min": 4,
+      "max": 20,
+      "step": 1,
+      "label": "Links per column",
+      "info": "Break long drop downs into multiple columns",
+      "default": 10
+    }
+  ],
+  "blocks": [
+    {
+      "type": "mega_menu",
+      "name": "Mega dropdown",
+      "settings": [{
+          "type": "text",
+          "id": "menu_item",
+          "label": "Menu item",
+          "info": "Enter a link title from your main navigation"
+        },
+        {
+          "type": "image_picker",
+          "id": "nav_image",
+          "label": "Featured image"
+        },
+        {
+          "type": "url",
+          "id": "nav_promo_link",
+          "label": "Featured image link"
+        },
+        {
+          "type": "select",
+          "id": "image_position",
+          "label": "Image position",
+          "default": "left",
+          "options": [
+            {
+              "value": "left",
+              "label": "Left"
+            },
+            {
+              "value": "right",
+              "label": "Right"
+            }
+          ]
+        },
+{
+          "type": "collection",
+          "id": "newcollection",
+          "label": "Select Collection"
+        }
+      ]
+    },
+    {
+      "type": "links_with_images",
+      "name": "Links with images",
+      "settings": [
+        {
+          "type": "text",
+          "id": "menu_item",
+          "label": "Menu item",
+          "info": "Enter a link title from your main navigation"
+        },
+        {
+          "type": "select",
+          "id": "image_ratio",
+          "label": "Image ratio",
+          "default": "natural",
+          "options": [
+            {
+              "value": "natural",
+              "label": "Natural"
+            },
+            {
+              "value": "square",
+              "label": "Square (1:1)"
+            },
+            {
+              "value": "landscape",
+              "label": "Landscape (4:3)"
+            },
+            {
+              "value": "portrait",
+              "label": "Portrait (2:3)"
+            }
+          ]
+        },
+        {
+          "type": "header",
+          "content":"Image 1"
+        },
+        {
+          "type": "image_picker",
+          "id": "image_1",
+          "label": "Image"
+        },
+        {
+          "type": "url",
+          "id": "link_1",
+          "label": "Image link"
+        },
+        {
+          "type": "header",
+          "content":"Image 2"
+        },
+        {
+          "type": "image_picker",
+          "id": "image_2",
+          "label": "Image"
+        },
+        {
+          "type": "url",
+          "id": "link_2",
+          "label": "Image link"
+        },
+        {
+          "type": "header",
+          "content":"Image 3"
+        },
+        {
+          "type": "image_picker",
+          "id": "image_3",
+          "label": "Image"
+        },
+        {
+          "type": "url",
+          "id": "link_3",
+          "label": "Image link"
+        }
+      ]
+    },
+    {
+      "type": "Carousel",
+      "name": "Carousel Image",
+      "settings": [
+		{
+          "type": "collection",
+          "id": "newcollection",
+          "label": "Select Collection"
+        },
+        {
+          "type": "image_picker",
+          "id": "image_4",
+          "label": "Image"
+        },
+        {
+          "type": "url",
+          "id": "link_4",
+          "label": "Image link"
+        }
+      ]
+    }
+
+  ]
+}
+{% endschema %}

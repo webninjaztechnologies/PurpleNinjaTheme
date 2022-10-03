@@ -1,0 +1,77 @@
+
+<header>
+  <div class="top-header">
+    <div class="container">
+      <div class="top-header-content">
+        <div class="left-top-header">
+          <a href="mailto:{{section.settings.top_email}}"><i class="fas fa-envelope"></i> {{section.settings.top_email}}</a>
+          <a  class="p-left" href="tel:{{section.settings.phone_number}}"><i class="fas fa-phone-alt"></i> {{section.settings.phone_number}}</a>
+        </div>
+        <div class="right-top-header">
+
+          <div>
+
+            <ul class="submenu-account">
+              {% if customer %}
+              
+              <li class="cus-log-li"><a href="/account"><i class="fas fa-user"></i>{{ customer.name }}</a>
+              	<div class="cus-login">
+                  <a href="/account" >Order History</a>
+                  <a href="/pages/customer-profile" >Account Details</a>
+                  <a href="{{ routes.account_addresses_url }}" >Edit Address</a>
+                  <a href="{{ routes.account_logout_url }}" >Log out</a>
+                </div>
+              </li>
+              
+              <li><a href="/account/logout" class="logout-btn">{{ 'logout.png' | asset_url | img_tag }}</a></li>
+              {% else %}
+              <li><a href="/account"><i class="fas fa-user"></i></a>
+              </li>
+              {% endif %}
+            </ul>
+            {% comment %}
+            <a href="{{ routes.cart_url }}" class="header__icon header__icon--cart link focus-inset" id="cart-icon-bubble">
+              {%- liquid
+                if cart == empty
+                  render 'icon-cart-empty'
+                else
+                  render 'icon-cart'
+                endif
+              -%}
+              <span class="visually-hidden">{{ 'templates.cart.cart' | t }}</span>
+              {%- if cart != empty or cart == empty-%}
+              <div class="cart-count-bubble">
+                {%- if cart.item_count < 100 -%}
+                <span aria-hidden="true">{{ cart.item_count }}</span>
+                {%- endif -%}
+                <span class="visually-hidden">{{ 'sections.header.cart_count' | t: count: cart.item_count }}</span>
+              </div>
+              {%- endif -%}
+            </a>
+            {% endcomment %}
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+{% schema %}
+{
+"name": "Top Bar",
+"settings": [
+{
+"id": "top_email",
+"type": "text",
+"label": "Email",
+"default": "email@domain.com"
+},
+{
+"id": "phone_number",
+"type": "text",
+"label": "Phone Number",
+"default": "(12345)67890"
+}
+]
+}
+{% endschema %}

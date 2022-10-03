@@ -1,0 +1,55 @@
+ <section class="category">
+        <div class="cat-head">
+            <h3>Top Products</h3>
+        </div>
+        <div class="container">
+            <div class="cat-carousel">
+                <div class="owl-carousel owl-theme category-carousel">
+                  {% assign collection = collections['top category']%}
+            
+             
+              {% for product in collections[section.settings.top_category].products %}
+                    <div class="item">
+                        <div class="cat-content">
+                            <div class="cat-img-body">
+                                <div class="cat-img">
+                                  <a href="{{ product.url }}"><img src="{{ product | img_url: "medium" }}" alt=""></a>
+                                </div>
+                              {% comment %}
+                                <div class="view-shop-div">
+                                    <a href="{{ product.url }}" class="veiw-btn">View Shop</a>
+                                </div
+                                  {% endcomment %}
+                            </div>
+                            
+                            <div class="cat-text">
+                                <h4><a href="{{ product.url }}">{{ product.title }}</a></h4>
+                                <p>{{ product.price | money }}</p>
+                            </div>
+                        </div>
+                    </div>
+                  {% endfor %}
+
+                    </div>
+                </div>
+
+            </div>
+    </section>
+{% schema %}
+  {
+    "name": "Top Category",
+    "settings": [
+	{
+            "type": "collection",
+            "id": "top_category",
+            "label": "Top Category"
+        }
+]
+  }
+{% endschema %}
+
+{% stylesheet %}
+{% endstylesheet %}
+
+{% javascript %}
+{% endjavascript %}

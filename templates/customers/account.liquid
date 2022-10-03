@@ -1,0 +1,199 @@
+{{ 'customer.css' | asset_url | stylesheet_tag }}
+<script src="{{ 'customer.js' | asset_url }}" defer></script>
+
+<div class=" container customer-page customer account">
+  <div class="customer-tab">
+     <div>
+    <h2>{{ 'customer.account.title' | t }}</h2>
+    
+  </div>
+      <ul>
+        <li><a href="/account" class="active"><i class="fas fa-arrow-circle-right"></i> Order History</a></li>
+        <li><a href="/pages/customer-profile"><i class="fas fa-arrow-circle-right"></i> Account Details</a></li>
+        <li><a href="{{ routes.account_addresses_url }}">
+        <i class="fas fa-arrow-circle-right"></i> {{ 'customer.account.view_addresses' | t }} ({{ customer.addresses_count }})
+      </a></li>
+        <li><a href="{{ routes.account_logout_url }}">
+      <i class="fas fa-arrow-circle-right"></i> {{ 'customer.log_out' | t }}
+    </a></li>
+        
+      </ul>
+    </div>
+  
+
+  <div class="order-history-page">
+    
+    
+    <div class="customer-width">
+      <h2>{{ 'customer.orders.title' | t }}</h2>
+
+      {% paginate customer.orders by 20 %}
+        {%- if customer.orders.size > 0 -%}
+          <table role="table" class="order-history">
+            <caption class="visually-hidden">{{ 'customer.orders.title' | t }}</caption>
+            <thead role="rowgroup">
+              <tr role="row">
+                <th id="ColumnOrder" scope="col" role="columnheader">{{ 'customer.orders.order_number' | t }}</th>
+                <th id="ColumnDate" scope="col" role="columnheader">{{ 'customer.orders.date' | t }}</th>
+                <th id="ColumnPayment" scope="col" role="columnheader">{{ 'customer.orders.payment_status' | t }}</th>
+                <th id="ColumnFulfillment" scope="col" role="columnheader">{{ 'customer.orders.fulfillment_status' | t }}</th>
+                <th id="ColumnTotal" scope="col" role="columnheader">{{ 'customer.orders.total' | t }}</th>
+                <th> Action</th>
+              </tr>
+            </thead>
+            <tbody role="rowgroup">
+              {%- for order in customer.orders -%}
+                <tr role="row">
+                  <td
+                    id="RowOrder"
+                    role="cell"
+                    headers="ColumnOrder"
+                    data-label="{{ 'customer.orders.order_number' | t }}"
+                  >
+                    <a href="{{ order.customer_url }}" aria-label="{{ 'customer.orders.order_number_link' | t: number: order.name }}">
+                      {{ order.name }}
+                    </a>
+                  </td>
+                  <td headers="RowOrder ColumnDate" role="cell" data-label="{{ 'customer.orders.date' | t }}">
+                    {{ order.created_at | time_tag: format: 'date' }}
+                  </td>
+                  <td headers="RowOrder ColumnPayment" role="cell" data-label="{{ 'customer.orders.payment_status' | t }}">
+                    {{ order.financial_status_label }}
+                  </td>
+                  <td headers="RowOrder ColumnFulfillment" role="cell" data-label="{{ 'customer.orders.fulfillment_status' | t }}">
+                    {{ order.fulfillment_status_label }}
+                  </td>
+                  <td headers="RowOrder ColumnTotal" role="cell" data-label="{{ 'customer.orders.total' | t }}">
+                    {{ order.total_price | money_with_currency }}</td>
+                  <td headers="RowOrder ColumnTotal" role="cell" class="cancel-btn">
+                    
+                      
+                       <div class="wrapper">
+    
+    <button class="modal-toggle1">Cancel</button>
+  </div>
+  
+  <div class="modal">
+    <div class="modal-overlay modal-toggle1"></div>
+    <div class="modal-wrapper modal-transition">
+      <div class="modal-header">
+        <h2>Order Cancelation Process </h2>
+        <button class="modal-close modal-toggle1">X</button>
+       
+      </div>
+      
+      <div class="modal-body">
+        <div class="modal-content">
+          <div class="contact-div">
+  <div class="contact page-width page-width--narrow section-{{ section.id }}-padding">
+    <h2 class="title">{{ section.settings.heading | escape }}</h2>
+    <p class="sub-title">{{ section.settings.text | escape }}</p>
+    {%- form 'contact', id: 'ContactForm', class: 'isolate' -%}
+    {% comment %}
+      {%- if form.posted_successfully? -%}
+        <div class="form-status form-status-list form__message" tabindex="-1" autofocus>{% render 'icon-success' %} {{ 'templates.contact.form.post_success' | t }}</div>
+      {%- elsif form.errors -%}
+        <div class="form__message">
+          <h2 class="form-status caption-large text-body" role="alert" tabindex="-1" autofocus>{% render 'icon-error' %} {{ 'templates.contact.form.error_heading' | t }}</h2>
+        </div>
+        <ul class="form-status-list caption-large" role="list">
+          <li>
+            <a href="#ContactForm-email" class="link">
+              {{ form.errors.translated_fields['email'] | capitalize }} {{ form.errors.messages['email'] }}
+            </a>
+          </li>
+        </ul>
+      {%- endif -%}
+    {% endcomment %}
+      <h4 class="cancer-order-heading">Why you want to cancel ? <span>*</span></h4>
+    <div class="field">
+       
+        <input type="text" id="ContactForm-subject" required class="field__input" autocomplete="subject" name="contact[{{ 'templates.contact.form.subject' | t }}]"  value="{% if form.subject %}{{ form.subject }}{% elsif customer %}{{ customer.subject }}{% endif %}" placeholder="{{ 'templates.contact.form.subject' | t }}">
+		<label class="field__label" for="ContactForm-subject">{{ 'templates.contact.form.subject' | t }}</label> 
+      </div>
+    <h4 class="cancer-order-heading">Enter Order Id <span>*</span></h4>
+      <div class="field">
+<!--         <p> Order ID </p> 
+        <input type="text" placeholder="Enter Order ID" id="Order-id"> -->
+        <input type="text" id="ContactForm-order" required class="field__input" autocomplete="subject" name="contact[{{ 'templates.contact.form.order' | t }}]"  value="" placeholder="{{ 'templates.contact.form.order' | t }}">
+		<label class="field__label" for="ContactForm-order">Order ID</label>  
+      </div>
+    
+      <div class="contact__button">
+        <button type="submit" class="button">
+          {{ 'templates.contact.form.send' | t }}
+        </button>
+      </div>
+    {%- endform -%}
+  </div>
+  </div>
+          
+        </div>
+      </div>
+    </div>
+  </div>
+                  </td>
+                  
+                </tr>
+              {%- endfor -%}
+            </tbody>
+          </table>
+        {%- else -%}
+          <p>{{ 'customer.orders.none' | t }}</p>
+        {%- endif -%}
+
+        {%- if paginate.pages > 1 -%}
+          {%- if paginate.parts.size > 0 -%}
+              <nav class="pagination" role="navigation" aria-label="{{ 'general.pagination.label' | t }}">
+                <ul role="list">
+                {%- if paginate.previous -%}
+                  <li>
+                    <a href="{{ paginate.previous.url }}" aria-label="{{ 'general.pagination.previous' | t }}">
+                      <svg aria-hidden="true" focusable="false" viewBox="0 0 10 6">
+                        <path fill-rule="evenodd" clip-rule="evenodd" d="M9.354.646a.5.5 0 00-.708 0L5 4.293 1.354.646a.5.5 0 00-.708.708l4 4a.5.5 0 00.708 0l4-4a.5.5 0 000-.708z" fill="currentColor">
+                      </svg>
+                    </a>
+                  </li>
+                {%- endif -%}
+
+                {%- for part in paginate.parts -%}
+                  <li>
+                    {%- if part.is_link -%}
+                      <a href="{{ part.url }}" aria-label="{{ 'general.pagination.page' | t: number: part.title }}">{{ part.title }}</a>
+                    {%- else -%}
+                      {%- if part.title == paginate.current_page -%}
+                        <span aria-current="page" aria-label="{{ 'general.pagination.page' | t: number: part.title }}">{{ part.title }}</span>
+                      {%- else -%}
+                        <span>{{ part.title }}</span>
+                      {%- endif -%}
+                    {%- endif -%}
+                  </li>
+                {%- endfor -%}
+
+                {%- if paginate.next -%}
+                  <li>
+                    <a href="{{ paginate.next.url }}" aria-label="{{ 'general.pagination.next' | t }}" >
+                      <svg aria-hidden="true" focusable="false" viewBox="0 0 10 6">
+                        <path fill-rule="evenodd" clip-rule="evenodd" d="M9.354.646a.5.5 0 00-.708 0L5 4.293 1.354.646a.5.5 0 00-.708.708l4 4a.5.5 0 00.708 0l4-4a.5.5 0 000-.708z" fill="currentColor">
+                      </svg>
+                    </a>
+                  </li>
+                {%- endif -%}
+                </ul>
+              </nav>
+          {%- endif -%}
+        {%- endif -%}
+      {% endpaginate %}
+    </div>
+
+    
+
+  </div>
+</div>
+<script>
+// Quick & dirty toggle to demonstrate modal toggle behavior
+$('.modal-toggle1').on('click', function(e) {
+  e.preventDefault();
+  $('.modal').toggleClass('is-visible1');
+});
+</script>

@@ -1,0 +1,95 @@
+ 
+
+ <!-- ===============banner -->
+    <section class="banner">
+        <div class="banner-abs-img">
+<img src="https://cdn.shopify.com/s/files/1/0263/2689/2590/files/header-img.png?v=1645268009" alt="">
+          
+            <p></p>
+        </div>
+        <div class="container-fluid">
+            <div class="banner-carousel">
+                <div class="owl-carousel owl-theme ban-carousel">
+                  
+                  {% assign count = 1 %}
+                  {% for block in section.blocks %}
+                    <div class="item {% if count == 1 %} active {% endif %}">
+                        <div class="banner-body">
+                            <div class="banner-content">
+                                <span>{{block.settings.title_span}}</span>
+                                <h1>{{block.settings.title}}
+                                </h1>
+                                <p>{{block.settings.sub_title}}
+                                </p>
+                                <a href="{{block.settings.url}}" class="main-btn">Shop Now</a>
+                            </div>
+                            <div class="banner-content-img">
+                              {% if block.settings.image  != blank %}
+                                <img src="{{block.settings.image | img_url: 'original' }}" alt="">
+                          	{% else %}
+                                   <img src="{{ 'banner-place.png' | asset_url }}" alt="">
+                                  
+								{% endif %}  
+                          </div>
+                        </div>
+                    </div>
+                  {% assign count = count | plus: 1 %}
+                  {% endfor %}
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+{% schema %}
+  { "name": "Text Box",
+    "settings": [
+      
+					{
+						"type": "image_picker",
+						"id": "back_image",
+						"label": "Background Image"
+					}
+],
+ 
+    "name": "Hero",
+    "blocks":[
+      {
+        "type": "block",
+        "name": "Block",
+        "settings": [
+          {
+            "type": "text",
+            "id": "title",
+            "label": "Title",
+			"default": "MEN COLLECTION"
+          },
+{
+            "type": "text",
+            "id": "title_span",
+            "label": "Sub Title",
+			"default": "MEN COLLECTION"
+          },
+          {
+            "type": "textarea",
+            "id": "sub_title",
+            "label": "Discription",
+			"default": "MEN COLLECTION"
+          },
+          {
+            "type": "url",
+            "id": "url",
+            "label": "Url"
+          },
+		  			{
+						"type": "image_picker",
+						"id": "image",
+						"label": "Main Image"
+					}	
+        ]
+      }
+    ]
+
+  }
+{% endschema %}
+

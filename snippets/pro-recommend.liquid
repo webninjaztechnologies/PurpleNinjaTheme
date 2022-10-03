@@ -1,0 +1,22 @@
+          <style>
+            .pro-card-list .card-social-icon, .product-recommendations  {    display: none !important;}
+          </style>	
+		<div class="container">
+          <ul>
+			<h2 class="product-recommendations__heading">Most Popular Products</h2>
+			    <div class="owl-carousel owl-theme featured-pro-carousel4">
+                  
+                   {% for product in collections.all.products limit: 6 %}
+                    <div class="item">
+                      <li class="pro-card-list">
+                        {% render 'card-product',
+                          card_product: product
+                        %}
+                      </li>
+                    </div>
+                        
+                  {% endfor %}
+                  
+                </div>
+			</ul>
+		</div>

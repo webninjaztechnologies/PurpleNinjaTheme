@@ -1,0 +1,59 @@
+<section class="newsletter">
+            <div class="container">
+            <div class="newsletter-content">
+                <h3>{{ section.settings.trending_collection | escape }}</h3>
+                <a href="/collections" class="main-btn">Shop Now</a>
+            </div>
+            </div>
+        </section>
+{% comment %}
+		<div class="brand">
+  <ul>
+    {%- for block in section.blocks -%}
+    {% if block.type == 'Image'%}
+    <li>
+      <img src="{{ block.settings.image | img_url: 'medium' }}" alt="">
+      
+    </li>
+    {% endif %}
+    {% endfor%}
+  </ul>
+<!--         <img src="https://cdn.shopify.com/s/files/1/0263/2689/2590/files/brand.png?v=1645523519" alt=""> -->
+</div>
+{% endcomment %}
+{% schema %}
+  {
+    "name": "Newsletter",
+    "settings": [
+		{
+            "type": "text",
+            "id": "trending_collection",
+            "label": "Newsletter Heading"
+        },
+		{
+            "type": "image_picker",
+            "id": "image",
+            "label": "Image"
+         }],
+  "blocks": [
+     {
+       "name": "Newsletter Image",
+       "type": "Image",
+       "settings": [
+         {
+           "type": "image_picker",
+           "id": "image",
+           "label": "Image"
+         }
+       ]
+     }
+   ]
+	
+  }
+{% endschema %}
+
+{% stylesheet %}
+{% endstylesheet %}
+
+{% javascript %}
+{% endjavascript %}

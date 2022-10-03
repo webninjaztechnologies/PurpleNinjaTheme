@@ -1,0 +1,50 @@
+{{ 'customer.css' | asset_url | stylesheet_tag }}
+<script src="{{ 'customer.js' | asset_url }}" defer></script>
+<div class="container">
+  <div class="main-customer-profile">
+    <div class="customer-tab">
+      <div>
+        <h2>{{ 'customer.account.title' | t }}</h2>
+      </div>
+        <ul>
+          <li><a href="/account"><i class="fas fa-arrow-circle-right"></i> Order History</a></li>
+          <li><a class="active" href="/pages/customer-profile"><i class="fas fa-arrow-circle-right"></i> Account Details</a></li>
+          <li><a href="{{ routes.account_addresses_url }}">
+          <i class="fas fa-arrow-circle-right"></i> {{ 'customer.account.view_addresses' | t }} ({{ customer.addresses_count }})
+        </a></li>
+          <li><a href="{{ routes.account_logout_url }}">
+        <i class="fas fa-arrow-circle-right"></i> {{ 'customer.log_out' | t }}
+      </a></li>
+
+        </ul>
+      </div>
+    
+    <div class="customer-profile">
+
+       <h2 class="customer-profile-Heading">Account Details</h2>  
+
+      <div id="account-details" class="content-item account-content-div">
+        <div class="customer-name-detail">
+          <h5 class="name">{{ customer.name }}</h5>
+          <h4 class="customer-profile-heading">Email</h4>
+          <p class="email note">{{ customer.email }}</p>
+          <h4 class="customer-profile-heading">Phone</h4>
+          <p class="email note">{{ customer.phone }}</p>
+          <a href="" class="customer-detail-writer"><i class="fas fa-pen"></i></a>
+        </div>
+        <div class="address-note customer-address-note">
+          {% if customer.default_address != nil %}
+            {{ customer.default_address | format_address }}
+          {% endif %}
+          <a href="" class="customer-detail-writer"><i class="fas fa-pen"></i></a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+{% schema %}
+  {
+    "name": "Section name",
+    "settings": []
+  }
+{% endschema %}

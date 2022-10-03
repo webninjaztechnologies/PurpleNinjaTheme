@@ -1,0 +1,220 @@
+    <!-- ======================== latest product -->
+  
+    <section class="latest-product">
+        <div class="container">
+    <!-- tab  -->
+    <div class="l-pro-head">
+        <h3>Leatest Products</h3>
+    </div>
+    <div class="tabset" id="myDIV">
+        
+            <!-- Tab 1 -->
+      
+     
+
+      
+        <input type="radio" name="tabset" id="tab1" aria-controls="marzen" checked>
+        <label for="tab1" class="tab1 active">New Arrival</label>
+        <!-- Tab 2 -->
+        <input type="radio" name="tabset" id="tab2" aria-controls="rauchbier">
+        <label for="tab2" class="tab2" >Best Seller</label>
+        <!-- Tab 3 -->
+        <input type="radio" name="tabset" id="tab3" aria-controls="dunkles">
+        <label for="tab3" class="tab3">Featured</label>
+      
+     
+         <!-- Tab 4 -->
+<!--          <input type="radio" name="tabset" id="tab4" aria-controls="Offer">
+         <label for="tab4">Special Offer</label> -->
+        <div class="tab-panels">
+          <section id="marzen" class="tab-panel">
+            <div class="l-pro-body d-flex">
+              {% assign collection = collections['New Arrival']%}
+            
+              
+           {% for product in collections[section.settings.feature_collection].products %}
+             
+                <div class="l-pro-content">
+                    <div class="l-pro-img">
+                        <a href="{{ product.url }}"> <img src="{{ product | img_url: "medium" }}" alt=""></a>
+                        <div class="l-pro-sale">
+                            <img src="https://cdn.shopify.com/s/files/1/0263/2689/2590/files/sale-img.png?v=1645426032" alt="">
+                        </div>
+                    </div>
+                    <div class="l-pro-text">
+                        <h4>
+                            <a href="{{ product.url }}">{{ product.title }}</a>
+                        </h4>
+                        <p>{{ product.price | money }} <span>{{product.compare_at_price | money }}</span></p>
+                    </div>
+                </div>
+               
+              {% endfor %}
+
+            </div>
+        </section>
+         
+          <section id="rauchbier" class="tab-panel">
+            <div class="l-pro-body d-flex">
+                 {% assign collection = collections['best seller']%}
+            
+             
+              {% for product in collections[section.settings.best_seller].products %}
+                <div class="l-pro-content">
+                    <div class="l-pro-img">
+                        <a href="{{ product.url }}"> <img src="{{ product | img_url: "medium" }}" alt=""></a>
+                        <div class="l-pro-sale">
+                            <img src="https://cdn.shopify.com/s/files/1/0263/2689/2590/files/sale-img.png?v=1645426032" alt="">
+                        </div>
+                    </div>
+                    <div class="l-pro-text">
+                        <h4>
+                            <a href="{{ product.url }}">{{ product.title }}</a>
+                        </h4>
+                        <p>{{ product.price | money }} <span>{{product.compare_at_price | money }}</span></p>
+                    </div>
+                </div>
+                {% endfor %}
+
+            </div>
+          </section>
+          <section id="dunkles" class="tab-panel">
+            <div class="l-pro-body d-flex">
+                {% assign collection = collections['Featured']%}
+            
+              
+              {% for product in collections[section.settings.featured].products %}
+                <div class="l-pro-content">
+                    <div class="l-pro-img">
+                        <a href="{{ product.url }}"> <img src="{{ product | img_url: "medium" }}" alt=""></a>
+                        <div class="l-pro-sale">
+                            <img src="https://cdn.shopify.com/s/files/1/0263/2689/2590/files/sale-img.png?v=1645426032" alt="">
+                        </div>
+                    </div>
+                    <div class="l-pro-text">
+                        <h4>
+                            <a href="{{ product.url }}">{{ product.title }}</a>
+                        </h4>
+                        <p>{{ product.price | money }} <span>{{product.compare_at_price | money }}</span></p>
+                    </div>
+                </div>
+                {% endfor %}
+
+                
+            </div>
+          </section>
+          <section id="Offer" class="tab-panel">
+            <div class="l-pro-body d-flex">
+                {% assign collection = collections['Spacial Offer']%}
+            
+              
+              {% for product in collections[section.settings.spacial_offer].products %}
+                <div class="l-pro-content">
+                    <div class="l-pro-img">
+                        <a href="{{ product.url }}"> <img src="{{ product | img_url: "medium" }}" alt=""></a>
+                        <div class="l-pro-sale">
+                            <img src="https://cdn.shopify.com/s/files/1/0263/2689/2590/files/sale-img.png?v=1645426032" alt="">
+                        </div>
+                    </div>
+                    <div class="l-pro-text">
+                        <h4>
+                            <a href="#">{{ product.title }}</a>
+                        </h4>
+                        <p>{{ product.price | money }} <span>{{product.compare_at_price | money }}</span></p>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+          </section>
+        </div>
+        
+    </div>
+    </div>
+    </section>
+
+          <script>
+$(document).ready(function(){
+  $(".tab1").click(function(){
+    $(".tab1").addClass("active");
+    $(".tab2").removeClass("active");
+    $(".tab3").removeClass("active");
+  });
+  $(".tab2").click(function(){
+    $(".tab2").addClass("active");
+    $(".tab1").removeClass("active");
+    $(".tab3").removeClass("active");
+  });
+  $(".tab3").click(function(){
+    $(".tab3").addClass("active");
+    $(".tab1").removeClass("active");
+    $(".tab2").removeClass("active");
+  });
+});
+</script>      
+                  
+                  
+
+
+{% schema %}
+  {
+    "name": "Latest Product",
+    "settings": [
+        {
+            "type": "collection",
+            "id": "feature_collection",
+            "label": "New Arrival"
+        },
+		{
+            "type": "collection",
+            "id": "best_seller",
+            "label": "Best Seller"
+        },
+		{
+            "type": "collection",
+            "id": "featured",
+            "label": "Featured"
+        }
+,
+		{
+            "type": "collection",
+            "id": "spacial_offer",
+            "label": "Spacial Offer"
+        }
+    ],
+	  "blocks": [
+    
+    {
+      "type": "custom-text",
+      "name": "Latest product",
+      "settings": [
+        {
+            "type": "collection",
+            "id": "feature_collection",
+            "label": "Latest product"
+        },
+		{
+      "type": "collection",
+      "id": "collection1",
+      "label": "New Arrival"
+    },
+	{
+      "type": "collection",
+      "id": "collection2",
+      "label": "Best Seller"
+    },
+	{
+      "type": "collection",
+      "id": "collection3",
+      "label": "Featured"
+    },
+	{
+      "type": "collection",
+      "id": "collection4",
+      "label": "Spacial Offer"
+    }
+      ]
+    }
+  ]
+  }
+{% endschema %}
+

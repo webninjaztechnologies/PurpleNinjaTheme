@@ -1,0 +1,39 @@
+<div class="qv-product-images" style="opacity: 0"></div>
+<div class="qv-content">
+ <div class="holder">
+    <a class="view-product" href=""><h3 class="qv-product-title"></h3></a>
+   <h4 class="qv-product-type"></h4>
+   <h5 class="qv-product-price"></h5>
+   <h5 class="qv-product-original-price"></h5>
+   <hr />
+   <div class="qv-add-to-cart">
+     <div class="qv-product-options"></div>
+     <div class="quantity1">
+       <span>Quantity</span>
+       <input type="number" class="qv-quantity" value="1" min="1">
+     </div>
+     <input type="submit" class="main-btn qv-add-button" value="Add to Cart">
+     <div class="qv-add-to-cart-response"></div>
+   </div>
+ </div>
+</div>
+
+<script type="text/javascript">
+jQuery(document).ready(function () {
+	jQuery(document).on('click', '.qv-add-button', function () {
+      	
+		jQuery.ajax({
+          type: 'POST',
+          async: false,
+			url: '/cart/update.js',
+			method: "GET",
+			dataType: 'json',
+			 success: function() { location.href = ''; }
+      
+         
+		});
+	});
+});
+
+
+</script>

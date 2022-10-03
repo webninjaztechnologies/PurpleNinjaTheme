@@ -1,0 +1,161 @@
+{%include 'breadcrumb'%}
+{{ 'about.css' | asset_url | stylesheet_tag }}
+
+<div class="our-ecommerce-businness">
+  <div class="container">
+    <div class="our-ecommerce-body">
+      <div class="our-ecommerce-content">
+        <img src="{{ section.settings.our_ecommerce_img | img_url: "medium" }}" alt="">
+      </div>
+      <div class="our-ecommerce-text">
+        <h3>{{ section.settings.hero_heading }}
+        </h3>
+        <p>{{ section.settings.ecommerce_desc }}</p>
+        <a href="/pages/contact" class="contact-btn main-btn">Contact us</a>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- about features ============================== -->
+<div class="about-features">
+  <div class="about-feature-head">
+    <h3>{{ section.settings.feature_heading }}</h3>
+  </div>
+  <div class="container">
+    <div class="about-features-body">
+      <div class="shopex-card d-flex">
+        {% for block in section.blocks %}
+        {% if block.type == 'block-1' %}
+        <div class="shopex-card-content about-feature-content">
+          <div class="shopex-card-header">
+            <img src="{{block.settings.image | img_url: 'original' }}" alt="">
+          </div>
+          <div class="shopex-card-body">
+            <h4>{{block.settings.shopex-title}}</h4>
+            <p>{{block.settings.product-desc}}</p>
+          </div>
+        </div>
+        {% endif %}
+        {% endfor %}
+      </div>
+    </div>
+  </div>
+</div>
+<!-- what our client say ==================== -->
+<div class="our-client-say">
+  <div class="client-say-head">
+    <h3>Our Client Say!</h3>
+  </div>
+  <div class="container">
+    <div class="our-client-say-carousel">
+
+      <div class="owl-carousel owl-theme about-feature-carousel">
+        {% for block in section.blocks %}
+        {% if block.type == 'block-2' %}
+        <div class="item">
+          <div class="client-say-text">
+            <img src="{{block.settings.client_image | img_url: 'original' }}" alt="">
+            <h4>{{block.settings.client-title}}</h4>
+            <span>{{block.settings.client-subtitle}}</span>
+            <p>{{block.settings.client-desc}}</p>
+          </div>
+        </div>
+        {% endif %}
+        {% endfor%}
+      </div>
+    </div>
+  </div>
+</div>
+{% schema %}
+  {
+    "name": "About Us",
+    "settings": [
+		{
+			"type": "image_picker",
+			"id": "our_ecommerce_img",
+			"label": "Our Ecommerce Image"
+		},
+	    {
+            "type": "text",
+            "id": "hero_heading",
+            "label": "Our Ecommerce Heading Text"
+        },
+	    {
+            "type": "text",
+            "id": "ecommerce_desc",
+            "label": "Our Ecommerce Description Text"
+        },
+	    {
+            "type": "text",
+            "id": "feature_heading",
+            "label": "Our Features Heading Text"
+        }
+	],
+	"blocks": [
+			{
+				"type": "block-1",
+				"name": "Our Features",
+				"settings": [
+					
+					{
+						"type": "image_picker",
+						"id": "image",
+						"label": "Feature Image"
+					},
+					{
+						"type": "text",
+						"id": "shopex-title",
+						"label": "Feature title",
+						"default": "Enter Feature title"
+					},
+					{
+						"type": "text",
+						"id": "product-desc",
+						"label": "Feature Discription",
+						"default": "Enter Feature discription"
+					}
+					
+					
+				]
+				},
+				{
+				"type": "block-2",
+				"name": "What Our Client Say",
+				"settings": [
+					
+					{
+						"type": "image_picker",
+						"id": "client_image",
+						"label": "Client Image"
+					},
+					{
+						"type": "text",
+						"id": "client-title",
+						"label": "Our Client title",
+						"default": "Enter Client title"
+					},
+					{
+						"type": "text",
+						"id": "client_subtitle",
+						"label": "Our Client Subtitle",
+						"default": "Enter Our Client Subtitle"
+					},
+					{
+						"type": "text",
+						"id": "client-desc",
+						"label": "Our Client Discription",
+						"default": "Enter Our Client discription"
+					}
+					
+					
+				]
+			}
+		]
+  }
+{% endschema %}
+
+{% stylesheet %}
+{% endstylesheet %}
+
+{% javascript %}
+{% endjavascript %}

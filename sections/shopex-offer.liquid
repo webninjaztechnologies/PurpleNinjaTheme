@@ -1,0 +1,64 @@
+ <!-- =========================What Shopex Offer! -->
+
+    <section class="shopex">
+        <div class="container">
+            <div class="shopex-head">
+                <h3>What Shopex Offer!</h3>
+            </div>
+            <div class="shopex-card d-flex">
+              {% for block in section.blocks %}
+                <div class="shopex-card-content">
+                    <div class="shopex-card-header">
+                        <img src="{{block.settings.image | img_url: 'original' }}" alt="">
+                    </div>
+                    <div class="shopex-card-body">
+                        <h4>{{block.settings.shopex-title}}</h4>
+                        <p>{{block.settings.product-desc}}</p>
+                    </div>
+                </div>
+              {% endfor %}
+
+            </div>
+        </div>
+    </section>
+{% schema %}
+  {
+  "name": "Shopex Offer Section",
+
+"blocks": [
+			{
+				"type": "text",
+				"name": "Product",
+				"settings": [
+					
+					{
+						"type": "image_picker",
+						"id": "image",
+						"label": "Shopex Image"
+					},
+					{
+						"type": "text",
+						"id": "shopex-title",
+						"label": "Shopex title",
+						"default": "Enter shopex title"
+					},
+					{
+						"type": "text",
+						"id": "product-desc",
+						"label": "Shopex Discription",
+						"default": "Enter shopex discription"
+					}
+					
+					
+				]
+			}
+		]
+		
+	}
+{% endschema %}
+
+{% stylesheet %}
+{% endstylesheet %}
+
+{% javascript %}
+{% endjavascript %}

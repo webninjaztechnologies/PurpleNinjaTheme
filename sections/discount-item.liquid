@@ -1,0 +1,134 @@
+ {%- assign collection = collections[section.settings.collection] -%}
+  {%- assign product_limit = section.settings.grid | times: section.settings.rows -%}  
+<section class="discount-item">
+        <div class="discount-item-head">
+            <h3>{{ section.settings.hero_heading | escape }}</h3>
+        </div>
+        <div class="container">
+            
+                <div class="tabs">
+                    <ul class="tabs-nav">
+                    <li><a href="#tab-1">Wood Chair</a></li>
+                    <li><a href="#tab-2">Plastic Chair</a></li>
+                    <li><a href="#tab-3">Sofa Colletion</a></li>
+                    </ul>
+                    <div class="tabs-stage">
+                    <div class="div" id="tab-1">
+                      {% for product in collections.all.products %} 
+          	{% for tag in product.tags %}
+          	{% if tag == 'wood-chair' %}
+                        <div class="discount-item-body">
+                            <div class="disc-item-content">
+                                <h3>{{ section.settings.wood_disc_text| escape }}</h3>
+                                <h4>{{ product.title }}</h4>
+                                <p>{{ product.description }}</p>
+                                <ul>
+                                    {% for block in section.blocks %}
+                                    <li>{{ block.settings.linktext }}</li>
+                                  {% endfor %}
+                                </ul>
+                                <a href="{{ product.url }}" class="main-btn">Shop Now</a>
+                            </div>
+                            <div class="disc-item-content">
+                                <img src="{{ product | img_url: "original" }}" alt="">
+                            </div>
+                        </div>
+                      {% endif %}
+                  {% endfor %}
+                  {% endfor %}
+                    </div>
+                    <div class="div" id="tab-2">
+                      {% for product in collections.all.products %} 
+                      {% for tag in product.tags %}
+                      {% if tag == 'wood-chair' %}
+                        <div class="discount-item-body">
+                            <div class="disc-item-content">
+                                <img src="{{ product | img_url: "original" }}" alt="">
+                            </div>
+                            <div class="disc-item-content">
+                                <h3>{{ section.settings.plastic_disc_text| escape }}</h3>
+                                <h4>{{ product.title }}</h4>
+                                <p>{{ product.description }}</p>
+                                <ul>
+                                     {% for block in section.blocks %}
+                                    <li>{{ block.settings.linktext }}</li>
+                                  {% endfor %}
+                                </ul>
+                                <a href="{{ product.url }}" class="main-btn">Shop Now</a>
+                            </div>
+                        </div>
+                      {% endif %}
+                  {% endfor %}
+                  {% endfor %}
+                    </div>
+                    <div class="div" id="tab-3">
+                      {% for product in collections.all.products %} 
+                      {% for tag in product.tags %}
+                      {% if tag == 'wood-chair' %}
+                        <div class="discount-item-body">
+                            <div class="disc-item-content">
+                                <h3>{{ section.settings.sofa_disc_text| escape }}</h3>
+                                <h4>{{ product.title }}</h4>
+                                <p>{{ product.description }}</p>
+                                <ul>
+                      {% for block in section.blocks %}
+                                    <li>{{ block.settings.linktext }}</li>
+                                  {% endfor %}
+                                </ul>
+                                <a href="{{ product.url }}" class="main-btn">Shop Now</a>
+                            </div>
+                            <div class="disc-item-content">
+                                <img src="{{ product | img_url: "original" }}" alt="">
+                            </div>
+                        </div>
+                       {% endif %}
+                  {% endfor %}
+                  {% endfor %}
+                    </div>
+                    </div>
+                </div>
+        </div>
+    </section>
+{% schema %}
+  {
+    "name": "Discount Item",
+    "settings": [
+	
+         {
+            "type": "text",
+            "id": "hero_heading",
+            "label": "Heading Text"
+         },
+		{
+            "id": "wood_disc_text",
+            "type": "text",
+            "label": "Wood Chair Discount"
+          },
+		{
+            "id": "plastic_disc_text",
+            "type": "text",
+            "label": "Plastic Chair Discount"
+          },
+		{
+            "id": "sofa_disc_text",
+            "type": "text",
+            "label": "Sofa Discount Text"
+          }
+    
+],
+	"blocks": [
+      {
+        "type": "link",
+        "name": "Link",
+        "settings": [
+          {
+            "id": "linktext",
+            "type": "text",
+            "label": "Link text"
+          }
+        ]
+      }
+	]
+  }
+
+{% endschema %}

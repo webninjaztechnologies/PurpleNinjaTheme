@@ -1,0 +1,125 @@
+  {%- assign collection = collections[section.settings.collection] -%}
+  {%- assign product_limit = section.settings.grid | times: section.settings.rows -%}    
+
+<section class="trending-pro">
+        <div class="container"> 
+          {% for product in collections.all.products %} 
+          {% for tag in product.tags %}
+          {% if tag == 'new-related' %}
+            <div class="trend-body">
+                <div class="trend-content trend-content1">
+                    <img src="{{ product | img_url: "original" }}" alt="">
+                </div>
+                
+                <div class="trend-content">
+                    <h2>{{ product.description }}
+                   </h2>
+                    <ul>
+                      {% assign count = 1 %}
+                      {% for block in section.blocks %}
+                        <li class="first{{ count }}">{{ block.settings.linktext }}</li>
+                      {% assign count = count | plus: 1 %}
+                      {%endfor%}
+<!--                         <li class="first2">Reinforced with double wood dowels, glue, screw - nails corner 
+                            blocks and machine nails
+                        </li>
+                        <li class="first3">Arms, backs and seats are structurally reinforced</li> -->
+                    </ul>
+                    <div class="pro-price">
+<!--                         <a href="#" class="main-btn add-to-cart">Add To Cart</a> -->
+                      
+                      {%- assign current_variant = product.selected_or_first_available_variant -%}          
+         
+          
+          
+          {% assign product_qty = 0 %}
+          {% for variant in product.variants %}
+            {% if variant.inventory_quantity > 0 %}
+              {% assign product_qty = product_qty | plus: variant.inventory_quantity %}
+            {% endif %}
+          {% endfor %}
+
+          {% if product_qty > 0 %}
+          <form method="post" action="/cart/add">
+          <div class="product-form__buttons">
+                   <button type="submit" name="add" class="main-btn-unique" {% if product.selected_or_first_available_variant.available == false %}disabled{% endif %}>Add To Cart</button>
+
+                  </div>
+                      <input type="hidden" name="id" value="{{ product.variants.first.id }}" />
+            <input  type="hidden" id="quantity" name="quantity" value="1"/>
+
+          </form>
+          {% else %}
+          In Stock Soon. Usually Ships in 3-5 Business Days. 
+          {% endif %}
+          
+                      <h3 class="pro-name"><a href="{{ product.url }}"> {{ product.title }}</a><span class="price">{{ product.price | money }}</span></h3>
+                    </div>
+                    
+                </div>
+            </div>
+         {%- endif -%}
+          {% endfor %}
+          {% endfor %}
+        </div>
+    </section> 
+
+{% schema %}
+  {
+    "name": "Unique Feature",
+    "settings": [
+	
+		
+         {
+            "type": "text",
+            "id": "hero_heading",
+            "label": "Heading Text"
+         },
+{
+      "id": "collection",
+      "type": "collection",
+      "label": {
+        "da": "Kollektion",
+        "de": "Kategorie",
+        "en": "Collection",
+        "es": "Colección",
+        "fi": "Kokoelma",
+        "fr": "Collection",
+        "hi": "कलेक्शन",
+        "it": "Collezione",
+        "ja": "コレクション",
+        "ko": "컬렉션",
+        "nb": "Samling",
+        "nl": "Collectie",
+        "pt-BR": "Coleção",
+        "pt-PT": "Coleção",
+        "sv": "Produktserie",
+        "th": "คอลเลกชัน",
+        "zh-CN": "收藏",
+        "zh-TW": "商品系列"
+      }
+    }
+],
+	"blocks": [
+      {
+        "type": "link",
+        "name": "Link",
+        "settings": [
+          {
+            "id": "linktext",
+            "type": "text",
+            "label": "Link text"
+          }
+        ]
+      }
+	]
+  }
+
+{% endschema %}
+
+{% stylesheet %}
+{% endstylesheet %}
+
+{% javascript %}
+{% endjavascript %}
+

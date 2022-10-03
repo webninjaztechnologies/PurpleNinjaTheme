@@ -1,0 +1,507 @@
+<script src="{{ 'ninja-details-disclosure.js' | asset_url }}" defer="defer"></script>
+<script src="{{ 'ninja-details-modal.js' | asset_url }}" defer="defer"></script>
+<script src="{{ 'ninja-cart-notification.js' | asset_url }}" defer="defer"></script>
+<header>
+        
+        <div class="main-header">
+            <div class="container-fluid">
+                 <div class="main-header-content">
+                   <div class="left-main-header">
+                    {%- if section.settings.logo -%}
+                    {% capture logo_size %}{{ section.settings.logo_width | escape }}x{% endcapture %}
+                    <a href="/" class="logo">
+                      <img src="{{ section.settings.logo | img_url: logo_size }}" alt="{{ section.settings.logo.alt | default: shop.name }}"
+                           {%- if section.settings.ratina_logo_enable -%}
+                           srcset="{{ section.settings.logo | img_url: logo_size }} 1x, {{ section.settings.logo | img_url: logo_size, scale: 2 }} 2x"
+                           {%- endif -%}>
+                    </a>
+                    {%- else -%}
+                    <a href="/" class="logo">
+                      <strong>{{ shop.name }}</strong>
+                    </a>
+                     {%- endif -%}
+                   </div>
+                     <div class="left-main-header">
+                         <ul class="main-menu">
+                           {% for link in linklists.main-menu.links %}
+                            <li><a class="{% if link.active %}active{%endif%}" href="{{ link.url }}">{{ link.title }}</a>
+                           		{% if link.links.size > 0 %}
+        							<ul class="menu dropdown-child">
+          								{% for child_link in link.links %}
+            								<li class="menu-link">
+              									<a href="{{ child_link.url }}">{{ child_link.title }}</a>
+
+                                          {% if child_link.links.size > 0 %}
+                                            <ul class="menu dropdown-grandchild">
+                                              {% for grandchild_link in child_link.links %}
+                                                <li class="menu-link">
+                                                  <a href="{{ grandchild_link.url }}">{{ grandchild_link.title }}</a>
+                                                </li>
+                                              {% endfor %}
+                                            </ul>
+                                          {% endif %}
+            							</li>
+          							{% endfor %}
+        							</ul>
+      							{% endif %}
+                           
+                           </li>
+                           {%endfor%}
+                         </ul>
+                       
+                     </div>
+                   
+                     <div class="right-main-header">
+                         <div class="right-main-header-content">
+                           
+                           
+                      	<form action="{{ routes.search_url }}" method="get" role="search" class="search search-modal__form">
+                            <div class="field">
+                              <input type="hidden" name="options[prefix]" value="last">
+                              <a href="#" class="search-btn modal-link"><i class="fas fa-search"></i></a>
+                            </div>
+                        </form>
+                             
+                         </div>
+                         
+                     </div>
+                 </div>
+             
+            </div>
+        </div>
+         <!-- phone -->
+     <div class="mobmenu">
+        <div id="header">
+            <nav class="nav">
+                <a href="/" class="logo">PurpleNinja</a>
+              <button class="toggle-menu">
+                <span></span>
+              </button>
+            </nav>
+        </div>
+          
+          <div id="menu" class="">
+            <nav class="main-nav">
+              <ul class="">
+                           {% for link in linklists.main-menu.links %}
+                            <li><a class="{% if link.active %}active{%endif%}" href="{{ link.url }}">{{ link.title }}</a>
+                           		{% if link.links.size > 0 %}
+        							<ul class="menu dropdown-child">
+          								{% for child_link in link.links %}
+            								<li class="menu-link">
+              									<a href="{{ child_link.url }}">{{ child_link.title }}</a>
+
+                                          {% if child_link.links.size > 0 %}
+                                            <ul class="menu dropdown-grandchild">
+                                              {% for grandchild_link in child_link.links %}
+                                                <li class="menu-link">
+                                                  <a href="{{ grandchild_link.url }}">{{ grandchild_link.title }}</a>
+                                                </li>
+                                              {% endfor %}
+                                            </ul>
+                                          {% endif %}
+            							</li>
+          							{% endfor %}
+        							</ul>
+      							{% endif %}
+                           
+                           </li>
+                           {%endfor%}
+                         </ul>
+              
+              <div class="right-main-header-content">
+                
+                    <form method="get" action="/search">
+                        <input type="text" name="q" />
+                        <input  type="submit" value="Search" />
+                    </form>
+                    </div>   
+            </nav>
+            
+          
+          </div>
+    </div>
+       
+    </header>
+{%- render 'cart-notification', color_scheme: section.settings.color_scheme -%}
+                   
+
+<div class="modal1" style="display: none;">
+  <div class="container">
+    <div class="search-modal-div">
+      {%- if settings.predictive_search_enabled -%}
+        <predictive-search data-loading-text="{{ 'accessibility.loading' | t }}">
+      {%- endif -%}
+        <form action="{{ routes.search_url }}" method="get" role="search" class="search">
+          <div class="field">
+            <input
+              class="search__input field__input"
+              id="Search-In-Template"
+              type="search"
+              name="q"
+              value="{{ search.terms | escape }}"
+              placeholder="{{ 'general.search.search' | t }}"
+              {%- if settings.predictive_search_enabled -%}
+                role="combobox"
+                aria-expanded="false"
+                aria-owns="predictive-search-results-list"
+                aria-controls="predictive-search-results-list"
+                aria-haspopup="listbox"
+                aria-autocomplete="list"
+                autocorrect="off"
+                autocomplete="off"
+                autocapitalize="off"
+                spellcheck="false"
+              {%- endif -%}
+            >
+            <label class="field__label" for="Search-In-Template">{{ 'general.search.search' | t }}</label>
+            <input name="options[prefix]" type="hidden" value="last">
+
+            {%- if settings.predictive_search_enabled -%}
+              <div class="predictive-search predictive-search--search-template" tabindex="-1" data-predictive-search>
+                <div class="predictive-search__loading-state">
+                  <svg aria-hidden="true" focusable="false" role="presentation" class="spinner" viewBox="0 0 66 66" xmlns="http://www.w3.org/2000/svg">
+                    <circle class="path" fill="none" stroke-width="6" cx="33" cy="33" r="30"></circle>
+                  </svg>
+                </div>
+              </div>
+
+              <span class="predictive-search-status visually-hidden" role="status" aria-hidden="true"></span>
+            {%- endif -%}
+
+            <button type="submit" class="search__button field__button" aria-label="{{ 'general.search.search' | t }}">
+              <i class="fas fa-search"></i>
+            </button>
+          </div>
+        </form>
+      {%- if settings.predictive_search_enabled -%}
+        </predictive-search>
+      {%- endif -%}
+      
+	<a href="#" class="close"><i class="fas fa-times"></i></a>
+ 
+
+    </div>
+</div>
+</div>
+ 
+<style>
+                   	
+.modal1 {
+	    background: #FFF;
+    height: 100%;
+    width: 100%;
+    text-align: center;
+    box-shadow: 5px 5px 5px rgb(0 0 0 / 50%);
+    -moz-box-shadow: 5px 5px 5px rgba(0,0,0,0.5);
+    -webkit-box-shadow: 5px 5px 5px rgb(0 0 0 / 50%);
+    position: fixed;
+        top:0px;
+    left: 0;
+    z-index: 999;
+}
+.search-modal-div{
+    margin-top: 100px;
+}
+  .search-modal-div input{border:1px solid #ddd;}
+.search-modal-div  input:focus{    box-shadow: 0 0 3px rgb(0 0 0 / 20%);}
+.modal1 .search-modal-div .close{
+  position: absolute;
+    top: 30px;
+    right: 30px;
+    font-size: 25px;
+    color: #777;
+  width:40px;
+}
+.modal1 a {
+  line-height: 1em;
+}
+
+                   </style>
+                   <script>
+                   $(document).ready(function(){
+                      $('.modal-link').click(function(){
+                          $('.modal1').show();
+                          $('.modal-bg').show();
+                      });
+                      $('.modal1 .close').click(function(){
+                          $('.modal1').hide();
+                          $('.modal-bg').hide();
+                      })
+                  })
+                   </script>
+{% schema %}
+{
+  "name": "Header",
+  "settings": [
+	{
+      "type": "text",
+      "id": "carousel-heading",
+      "label": "Carousel Heading"
+    },
+	{
+      "type": "checkbox",
+      "id": "full_width_header",
+      "label": "Enable full width"
+    },
+    {
+      "type": "select",
+      "id": "header_layout",
+      "label": "Header layout",
+      "options": [{
+          "value": "left",
+          "label": "Logo left, navigation below"
+        },
+        {
+          "value": "center",
+          "label": "Logo center, navigation below"
+        },
+        {
+          "value": "inline",
+          "label": "Logo left, navigation inline"
+        }
+      ]
+    },
+    {
+      "type": "checkbox",
+      "id": "floating_header",
+      "label": "Overlay header on full width image sections",
+      "info":"Puts header on top of the first section if slideshow or image with text overlay has been selected",
+      "default": false
+    },
+    {
+      "type": "header",
+      "content": "Logo"
+    },
+    {
+      "type": "image_picker",
+      "id": "logo",
+      "label": "Logo image"
+    },
+    {
+      "type": "range",
+      "id": "logo_max_width",
+      "min": 80,
+      "max": 300,
+      "step": 5,
+      "unit": "px",
+      "label": "Logo max width",
+      "default": 200
+    },
+    {
+      "type": "range",
+      "id": "logo_max_width_mobile",
+      "min": 80,
+      "max": 200,
+      "step": 5,
+      "unit": "px",
+      "label": "Mobile logo max width",
+      "default": 200
+    },
+    {
+      "type": "header",
+      "content": "Cart links"
+    },
+    {
+      "type": "checkbox",
+      "id": "icons_only",
+      "label": "Show icons only",
+      "default": false
+    },
+    {
+      "type": "select",
+      "id": "search_layout",
+      "label": "Search",
+      "default": "modal",
+      "options": [{
+          "value": "visible",
+          "label": "Always visible (excl inline layout)"
+        },
+        {
+          "value": "modal",
+          "label": "Modal"
+        },
+        {
+          "value": "none",
+          "label": "None"
+        }
+      ]
+    },
+    {
+      "type": "header",
+      "content": "navigation"
+    },
+    {
+      "type": "link_list",
+      "id": "main_nav",
+      "label": "Menu",
+      "default": "main-menu",
+      "info": "It is best practice to select the same menu used in the Mobile Nav. [Learn More](https://developers.google.com/search/mobile-sites/mobile-first-indexing)"
+    },
+    {
+      "type": "range",
+      "id": "nav_height",
+      "min": 30,
+      "max": 100,
+      "step": 2,
+      "unit": "px",
+      "label": "Height",
+      "default": 40
+    },
+    {
+      "type": "range",
+      "id": "linklist_breakpoint",
+      "min": 4,
+      "max": 20,
+      "step": 1,
+      "label": "Links per column",
+      "info": "Break long drop downs into multiple columns",
+      "default": 10
+    }
+  ],
+  "blocks": [
+    {
+      "type": "mega_menu",
+      "name": "Mega dropdown",
+      "settings": [{
+          "type": "text",
+          "id": "menu_item",
+          "label": "Menu item",
+          "info": "Enter a link title from your main navigation"
+        },
+        {
+          "type": "image_picker",
+          "id": "nav_image",
+          "label": "Featured image"
+        },
+        {
+          "type": "url",
+          "id": "nav_promo_link",
+          "label": "Featured image link"
+        },
+        {
+          "type": "select",
+          "id": "image_position",
+          "label": "Image position",
+          "default": "left",
+          "options": [
+            {
+              "value": "left",
+              "label": "Left"
+            },
+            {
+              "value": "right",
+              "label": "Right"
+            }
+          ]
+        },
+{
+          "type": "collection",
+          "id": "newcollection",
+          "label": "Select Collection"
+        }
+      ]
+    },
+    {
+      "type": "links_with_images",
+      "name": "Links with images",
+      "settings": [
+        {
+          "type": "text",
+          "id": "menu_item",
+          "label": "Menu item",
+          "info": "Enter a link title from your main navigation"
+        },
+        {
+          "type": "select",
+          "id": "image_ratio",
+          "label": "Image ratio",
+          "default": "natural",
+          "options": [
+            {
+              "value": "natural",
+              "label": "Natural"
+            },
+            {
+              "value": "square",
+              "label": "Square (1:1)"
+            },
+            {
+              "value": "landscape",
+              "label": "Landscape (4:3)"
+            },
+            {
+              "value": "portrait",
+              "label": "Portrait (2:3)"
+            }
+          ]
+        },
+        {
+          "type": "header",
+          "content":"Image 1"
+        },
+        {
+          "type": "image_picker",
+          "id": "image_1",
+          "label": "Image"
+        },
+        {
+          "type": "url",
+          "id": "link_1",
+          "label": "Image link"
+        },
+        {
+          "type": "header",
+          "content":"Image 2"
+        },
+        {
+          "type": "image_picker",
+          "id": "image_2",
+          "label": "Image"
+        },
+        {
+          "type": "url",
+          "id": "link_2",
+          "label": "Image link"
+        },
+        {
+          "type": "header",
+          "content":"Image 3"
+        },
+        {
+          "type": "image_picker",
+          "id": "image_3",
+          "label": "Image"
+        },
+        {
+          "type": "url",
+          "id": "link_3",
+          "label": "Image link"
+        }
+      ]
+    },
+    {
+      "type": "Carousel",
+      "name": "Carousel Image",
+      "settings": [
+		{
+          "type": "collection",
+          "id": "newcollection",
+          "label": "Select Collection"
+        },
+        {
+          "type": "image_picker",
+          "id": "image_4",
+          "label": "Image"
+        },
+        {
+          "type": "url",
+          "id": "link_4",
+          "label": "Image link"
+        }
+      ]
+    }
+
+  ]
+}
+{% endschema %}

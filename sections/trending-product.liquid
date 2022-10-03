@@ -1,0 +1,98 @@
+    <section class="trending-item">
+        <div class="container">
+            <div class="tren-item-head">
+                <h3>Trending Products</h3>
+            </div>
+            <div class="tren-item-body d-flex">
+              {% assign collection = collections['trending collection']%}
+            
+              
+           {% for product in collections[section.settings.trending_collection].products %}
+                <div class="tren-item-card">
+                    <div class="tren-item-card-header">
+                      <a href="{{ product.url }}"><img src="{{ product | img_url: "original" }}" alt=""></a>
+                    </div>
+                    <div class="tren-item-card-body">
+                      <h4><a href="{{product.url}}">{{ product.title }}</a></h4>
+                        <p>{{ product.price | money }} <span>{{product.compare_at_price | money }}</span></p>
+                    </div>
+                </div>
+              {% endfor %}
+            </div>
+            <div class="trend-disc d-flex">
+                <div class="trend-disc-item1">
+                    <h4>23% off in all products</h4>
+                    <a href="/collections/featured-collection" class="shop-now">Shop Now</a>
+                    <div class="trend-disc-img">
+                        <img src="https://cdn.shopify.com/s/files/1/0263/2689/2590/files/tren-disc1.png?v=1645512252" alt="">
+                    </div>
+                </div>
+                <div class="trend-disc-item1 trend-disc-item2">
+                    <h4>23% off in all products</h4>
+                    <a href="/collections/spacial-offer" class="shop-now">View Collection</a>
+                    <div class="trend-disc-img">
+                        <img src="https://cdn.shopify.com/s/files/1/0263/2689/2590/files/tren-disc2.png?v=1645512253" alt="">
+                    </div>
+                </div>
+                <div class=" trend-disc-item3">
+                  {% assign collection = collections['trending collection']%}
+            
+              
+           			{% for product in collections[section.settings.trending_collection1].products %}
+                    <div class="trending-item-body">
+                        <div class="tren-disc-img1">
+                          <a href="{{ product.url }}"><img src="{{ product | img_url: "original" }}" alt=""></a>
+                        </div>
+                        <div class="tren-disc-text">
+                            <h5><a href="{{ product.url }}">{{ product.title }}</a></h5>
+                            <p>{{product.compare_at_price | money }}</p>
+                        </div>
+                    </div>
+                  {% endfor %}
+<!--                     <div class="trending-item-body">
+                        <div class="tren-disc-img1">
+                            <img src="./img/offer-img2.png" alt="">
+                        </div>
+                        <div class="tren-disc-text">
+                            <h5>Executive Seat chair</h5>
+                            <p>$32.00</p>
+                        </div>
+                    </div>
+                    <div class="trending-item-body">
+                        <div class="tren-disc-img1">
+                            <img src="./img/offer-img3.png" alt="">
+                        </div>
+                        <div class="tren-disc-text">
+                            <h5>Executive Seat chair</h5>
+                            <p>$32.00</p>
+                        </div>
+                    </div> -->
+                    
+                </div>
+            </div>
+        </div>
+    </section>
+
+{% schema %}
+{
+    "name": "Trending Product",
+    "settings": [
+        {
+            "type": "collection",
+            "id": "trending_collection",
+            "label": "Trending product"
+        },
+		{
+            "type": "collection",
+            "id": "trending_collection1",
+            "label": "Trending offer product"
+        }
+    ]
+  }
+{% endschema %}
+
+{% stylesheet %}
+{% endstylesheet %}
+
+{% javascript %}
+{% endjavascript %}
