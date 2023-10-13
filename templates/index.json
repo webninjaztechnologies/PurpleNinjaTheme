@@ -142,6 +142,7 @@
         "81235fa3-9ee1-4dbb-ad7a-7b2b531ac50c",
         "941219cb-acc3-4a0b-9a9d-3df308c2a164"
       ],
+      "disabled": true,
       "settings": {
         "hero_heading": "",
         "collection": ""
@@ -149,6 +150,7 @@
     },
     "trending-product": {
       "type": "trending-product",
+      "disabled": true,
       "settings": {
         "trending_collection": "trending-collection",
         "trending_collection1": "trending-item"
@@ -188,6 +190,7 @@
         "f0060467-c8be-4ce6-a68c-0d94b41713ad",
         "4c8048b5-3d62-469c-bcf8-b5d70edcdfc7"
       ],
+      "disabled": true,
       "settings": {
         "hero_heading": "Discount Item",
         "wood_disc_text": "20% Discount On This Products",
@@ -197,6 +200,7 @@
     },
     "top-category": {
       "type": "top-category",
+      "disabled": true,
       "settings": {
         "top_category": "top-category"
       }
@@ -244,6 +248,7 @@
     },
     "164907174385675f32": {
       "type": "featured-blog",
+      "disabled": true,
       "settings": {
         "heading": "Latest Blog",
         "blog": "pets-calculator",
@@ -253,6 +258,64 @@
         "show_date": true,
         "show_author": true,
         "show_view_all": true,
+        "padding_top": 36,
+        "padding_bottom": 36
+      }
+    },
+    "00aedf03-e6ce-4d0b-b78b-0e3daddfd048": {
+      "type": "collection-list",
+      "blocks": {
+        "template--14752209338502__00aedf03-e6ce-4d0b-b78b-0e3daddfd048-featured_collection-1": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "black-crack"
+          }
+        },
+        "cc2c9b20-24a1-4213-9f43-0da6b9f5a4c7": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "concrete-rock"
+          }
+        },
+        "ad0cda40-bd7f-40fc-bd5b-e22340f8555a": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "golden-siri"
+          }
+        },
+        "template--14752209338502__00aedf03-e6ce-4d0b-b78b-0e3daddfd048-featured_collection-2": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "astro-rainbow"
+          }
+        },
+        "243406a8-cac2-4b76-80bf-96ee6a3dd6f0": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "before-sunset"
+          }
+        },
+        "template--14752209338502__00aedf03-e6ce-4d0b-b78b-0e3daddfd048-featured_collection-3": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": ""
+          }
+        }
+      },
+      "block_order": [
+        "template--14752209338502__00aedf03-e6ce-4d0b-b78b-0e3daddfd048-featured_collection-1",
+        "cc2c9b20-24a1-4213-9f43-0da6b9f5a4c7",
+        "ad0cda40-bd7f-40fc-bd5b-e22340f8555a",
+        "template--14752209338502__00aedf03-e6ce-4d0b-b78b-0e3daddfd048-featured_collection-2",
+        "243406a8-cac2-4b76-80bf-96ee6a3dd6f0",
+        "template--14752209338502__00aedf03-e6ce-4d0b-b78b-0e3daddfd048-featured_collection-3"
+      ],
+      "settings": {
+        "title": "Cool Collections",
+        "image_ratio": "square",
+        "color_scheme": "background-1",
+        "swipe_on_mobile": false,
+        "show_view_all": false,
         "padding_top": 36,
         "padding_bottom": 36
       }
@@ -268,6 +331,7 @@
     "discount-item",
     "top-category",
     "newsletter-section",
-    "164907174385675f32"
+    "164907174385675f32",
+    "00aedf03-e6ce-4d0b-b78b-0e3daddfd048"
   ]
 }
