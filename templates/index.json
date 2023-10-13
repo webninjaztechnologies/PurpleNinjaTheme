@@ -39,8 +39,63 @@
         "86c5b114-0f48-40ed-9a1b-9dd47d4a8db4",
         "481b0555-6e2f-4949-b3da-96519fd522f7"
       ],
+      "disabled": true,
       "settings": {
         "back_image": "shopify:\/\/shop_images\/collection_banners_3_1.webp"
+      }
+    },
+    "abe5025f-3c5e-42a5-bf9f-1bb771b5d4e1": {
+      "type": "slideshow",
+      "blocks": {
+        "template--14752209338502__abe5025f-3c5e-42a5-bf9f-1bb771b5d4e1-slide-2": {
+          "type": "slide",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/collection_banners_1_1_1.webp",
+            "heading": "",
+            "heading_size": "medium",
+            "subheading": "",
+            "button_label": "",
+            "link": "",
+            "button_style_secondary": false,
+            "box_align": "middle-center",
+            "show_text_box": false,
+            "text_alignment": "center",
+            "image_overlay_opacity": 0,
+            "color_scheme": "background-1",
+            "text_alignment_mobile": "center"
+          }
+        },
+        "37d3f4a2-7c8f-46ff-bf5f-09b4e8a0cba4": {
+          "type": "slide",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/collection_banners_3_1.webp",
+            "heading": "",
+            "heading_size": "medium",
+            "subheading": "",
+            "button_label": "",
+            "link": "",
+            "button_style_secondary": false,
+            "box_align": "middle-center",
+            "show_text_box": false,
+            "text_alignment": "center",
+            "image_overlay_opacity": 0,
+            "color_scheme": "background-1",
+            "text_alignment_mobile": "center"
+          }
+        }
+      },
+      "block_order": [
+        "template--14752209338502__abe5025f-3c5e-42a5-bf9f-1bb771b5d4e1-slide-2",
+        "37d3f4a2-7c8f-46ff-bf5f-09b4e8a0cba4"
+      ],
+      "settings": {
+        "layout": "full_bleed",
+        "slide_height": "medium",
+        "slider_visual": "counter",
+        "auto_rotate": false,
+        "change_slides_speed": 5,
+        "show_text_below": true,
+        "accessibility_info": "Slideshow about our brand"
       }
     },
     "featured-carousel": {
@@ -327,6 +382,7 @@
   },
   "order": [
     "hero-banner",
+    "abe5025f-3c5e-42a5-bf9f-1bb771b5d4e1",
     "featured-carousel",
     "latest-product",
     "shopex-offer",
