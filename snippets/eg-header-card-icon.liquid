@@ -1,4 +1,4 @@
-{% if request.page_type == 'cart' %}}
+{% if request.page_type == 'cart' %}
     <a
         id="cart-icon-bubble"
         class="header__icon header__icon--cart link focus-inset"
@@ -22,7 +22,7 @@
       <span class="visually-hidden">{{ 'template.cart.cart' | t }}</span>
       <div
           class="cart-count-bubble"
-          style="{%- if cart == empty -%}display:none;{% endif %}">
+          style="{%- if cart == empty -%} display:none; {% endif %}">
           {%- if cart.item_count < 100 -%}
             <span aria-hidden="true">{{ cart.item_count }}</span>
         {%- endif -%}}
