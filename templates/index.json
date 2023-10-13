@@ -315,7 +315,7 @@
         "image_ratio": "square",
         "color_scheme": "background-1",
         "swipe_on_mobile": false,
-        "show_view_all": false,
+        "show_view_all": true,
         "padding_top": 36,
         "padding_bottom": 36
       }
