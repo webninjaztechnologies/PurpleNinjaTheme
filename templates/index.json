@@ -43,7 +43,7 @@
       "type": "featured-carousel",
       "settings": {
         "title": "Featured Collections",
-        "collection": "",
+        "collection": "black-crack",
         "grid": 4,
         "rows": 2,
         "show_vendor": false,
@@ -52,10 +52,25 @@
     },
     "latest-product": {
       "type": "latest-product",
+      "blocks": {
+        "db2b0252-5acd-4744-a079-4aa464044c87": {
+          "type": "custom-text",
+          "settings": {
+            "feature_collection": "",
+            "collection1": "",
+            "collection2": "",
+            "collection3": "",
+            "collection4": ""
+          }
+        }
+      },
+      "block_order": [
+        "db2b0252-5acd-4744-a079-4aa464044c87"
+      ],
       "settings": {
-        "feature_collection": "featured-product",
-        "best_seller": "best-seller",
-        "featured": "featured",
+        "feature_collection": "astro-rainbow",
+        "best_seller": "black-crack",
+        "featured": "golden-siri",
         "spacial_offer": ""
       }
     },
