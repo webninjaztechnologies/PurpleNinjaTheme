@@ -42,7 +42,7 @@
     "featured-carousel": {
       "type": "featured-carousel",
       "settings": {
-        "title": "Featured Products",
+        "title": "Featured Collections",
         "collection": "black-crack",
         "grid": 4,
         "rows": 2,
