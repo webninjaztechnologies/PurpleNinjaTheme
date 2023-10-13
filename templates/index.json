@@ -393,6 +393,9 @@
         "243406a8-cac2-4b76-80bf-96ee6a3dd6f0",
         "template--14752209338502__00aedf03-e6ce-4d0b-b78b-0e3daddfd048-featured_collection-3"
       ],
+      "custom_css": [
+        ".full-unstyled-link{padding-left: 50px;}"
+      ],
       "settings": {
         "title": "Cool Collections",
         "image_ratio": "portrait",
