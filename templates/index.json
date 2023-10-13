@@ -109,7 +109,7 @@
       ],
       "custom_css": [
         ".banner {padding: 0px;}",
-        ".slider.slider--everywhere .slider__slide{margin-bottom: 0px !important;}"
+        ".slider.slider--everywhere .slider__slide {margin-bottom: 0px !important;}"
       ],
       "settings": {
         "layout": "full_bleed",
@@ -194,6 +194,7 @@
         "554b67a0-2d79-46d2-a8ef-a6e61b200296",
         "9ee8a9ba-e62e-4f94-bb39-6c77eb07776f"
       ],
+      "disabled": true,
       "settings": {
       }
     },
@@ -394,7 +395,7 @@
       ],
       "settings": {
         "title": "Cool Collections",
-        "image_ratio": "square",
+        "image_ratio": "portrait",
         "color_scheme": "background-1",
         "swipe_on_mobile": false,
         "show_view_all": true,
