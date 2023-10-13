@@ -44,18 +44,18 @@
         "back_image": "shopify:\/\/shop_images\/collection_banners_1_1_1.webp"
       }
     },
-    "40874bee-06b4-467b-8a16-c0a5097e61b6": {
+    "c03d1def-45b3-4052-844e-bb8ee0fdbd45": {
       "type": "slideshow",
       "blocks": {
-        "template--14752209338502__40874bee-06b4-467b-8a16-c0a5097e61b6-slide-2": {
+        "1bf08594-53e1-4966-85c2-7551c40410ed": {
           "type": "slide",
           "settings": {
             "image": "shopify:\/\/shop_images\/collection_banners_1_1_1.webp",
-            "heading": "",
-            "heading_size": "medium",
-            "subheading": "",
-            "button_label": "",
-            "link": "shopify:\/\/collections",
+            "heading": "Image slide",
+            "heading_size": "small",
+            "subheading": "Tell your brand's story through images",
+            "button_label": "Button label",
+            "link": "",
             "button_style_secondary": false,
             "box_align": "middle-center",
             "show_text_box": true,
@@ -67,7 +67,7 @@
         }
       },
       "block_order": [
-        "template--14752209338502__40874bee-06b4-467b-8a16-c0a5097e61b6-slide-2"
+        "1bf08594-53e1-4966-85c2-7551c40410ed"
       ],
       "settings": {
         "layout": "full_bleed",
@@ -363,7 +363,7 @@
   },
   "order": [
     "hero-banner",
-    "40874bee-06b4-467b-8a16-c0a5097e61b6",
+    "c03d1def-45b3-4052-844e-bb8ee0fdbd45",
     "featured-carousel",
     "latest-product",
     "shopex-offer",
