@@ -14,6 +14,7 @@
         },
         "86c5b114-0f48-40ed-9a1b-9dd47d4a8db4": {
           "type": "block",
+          "disabled": true,
           "settings": {
             "title": "MEN COLLECTION",
             "title_span": "MEN COLLECTION",
@@ -23,6 +24,7 @@
         },
         "481b0555-6e2f-4949-b3da-96519fd522f7": {
           "type": "block",
+          "disabled": true,
           "settings": {
             "title": "New Furniture Collection  Trends in 2020",
             "title_span": "Best Furniture For Your Castle....",

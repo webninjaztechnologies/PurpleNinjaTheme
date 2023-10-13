@@ -1,1 +1,181 @@
-{"current":{"sections":{"announcement-bar":{"type":"announcement-bar","settings":{"top_email":"email@domain.com","phone_number":"(12345)67890"}},"header_new":{"type":"header_new","blocks":{"b448be10-ac24-40f8-a9d8-60182b0ca04d":{"type":"mega_menu","settings":{"menu_item":"Products","nav_image":"shopify:\/\/shop_images\/blog1.png","nav_promo_link":"shopify:\/\/collections","image_position":"right","newcollection":"best-selling-collection"}},"3fa4aff9-f3cd-431c-b34e-8aaf77c67b0f":{"type":"links_with_images","settings":{"menu_item":"Blog","image_ratio":"natural","image_1":"shopify:\/\/shop_images\/blog2.png","link_1":"","image_2":"shopify:\/\/shop_images\/blog1.png","link_2":"","image_3":"shopify:\/\/shop_images\/blog3.png","link_3":"shopify:\/\/blogs\/pets-calculator\/basenji-breed-information-photos-food-toys-and-supplement-information"}}},"block_order":["b448be10-ac24-40f8-a9d8-60182b0ca04d","3fa4aff9-f3cd-431c-b34e-8aaf77c67b0f"],"settings":{"carousel-heading":"","full_width_header":false,"header_layout":"inline","floating_header":false,"logo_max_width":200,"logo_max_width_mobile":200,"icons_only":false,"search_layout":"modal","main_nav":"main-menu","nav_height":40,"linklist_breakpoint":10}},"footer":{"type":"footer","blocks":{"0621b8b8-6a03-4754-8452-93018789fe19":{"type":"newsletter","settings":{"title":"","address":"B-719, Noida One Building Noida Sec-62 Uttar Pradesh","address_heading":"Contact Info"}},"e9abaf47-217e-46a4-9af2-517083d9400d":{"type":"link_list","settings":{"title":"Main Menu","menu":"footer"}},"855bd9c8-fe7c-45d6-88a6-7e8cc36f1e80":{"type":"link_list","settings":{"title":"Pages","menu":"footer-menu1"}},"f45c36a4-3da6-44aa-833f-3240e03e4126":{"type":"link_list","settings":{"title":"Customer Care","menu":"footer-menu-2"}},"0bb4cd46-f366-4b57-8b96-d73fe91a8d25":{"type":"Image","settings":{"image":"shopify:\/\/shop_images\/f-img5.png"}},"c88fb4ac-86d8-48ac-9f50-cea2c650aab7":{"type":"Image","settings":{"image":"shopify:\/\/shop_images\/f-img4.png"}},"2db588b8-6d4f-4fb6-ab2c-5b55547fc7ca":{"type":"Image","settings":{"image":"shopify:\/\/shop_images\/f-img-3.png"}},"2961bf65-f730-4c92-9048-6ace237f10b7":{"type":"Image","settings":{"image":"shopify:\/\/shop_images\/f-img2.png"}},"1d8b9084-3ba1-4124-b5ad-7e32b193e930":{"type":"Image","settings":{"image":"shopify:\/\/shop_images\/f-img1.png"}},"05dde35f-7049-452b-a240-d34c60d53cd4":{"type":"Copyright","settings":{"cp_text":"©Purple Ninja - All Rights Reserved"}},"81df513b-0f9b-4964-aedb-b21a03aca361":{"type":"Copyright","settings":{"cp_text":"Owned & managed by Webninjaz Technology"}},"af53a77d-e7da-4599-b2d4-00068db32512":{"type":"Social","settings":{"icon_name":"Facebook","icon":"<i class=\"fab fa-facebook-f\"><\/i>","Icon_url":""}},"09640cb1-25a7-43e6-8ced-5bab173a4872":{"type":"Social","settings":{"icon_name":"Instagram","icon":"<i class=\"fab fa-instagram\"><\/i>","Icon_url":""}},"ade306ee-9a4f-43e2-90a5-03a47c6e4359":{"type":"Social","settings":{"icon_name":"Twitter","icon":"<i class=\"fab fa-twitter\"><\/i>","Icon_url":""}}},"block_order":["0621b8b8-6a03-4754-8452-93018789fe19","e9abaf47-217e-46a4-9af2-517083d9400d","855bd9c8-fe7c-45d6-88a6-7e8cc36f1e80","f45c36a4-3da6-44aa-833f-3240e03e4126","0bb4cd46-f366-4b57-8b96-d73fe91a8d25","c88fb4ac-86d8-48ac-9f50-cea2c650aab7","2db588b8-6d4f-4fb6-ab2c-5b55547fc7ca","2961bf65-f730-4c92-9048-6ace237f10b7","1d8b9084-3ba1-4124-b5ad-7e32b193e930","05dde35f-7049-452b-a240-d34c60d53cd4","81df513b-0f9b-4964-aedb-b21a03aca361","af53a77d-e7da-4599-b2d4-00068db32512","09640cb1-25a7-43e6-8ced-5bab173a4872","ade306ee-9a4f-43e2-90a5-03a47c6e4359"],"settings":{"show_payment_icons":false,"color_footer_bg":"#f6f6f6","color_footer_text":"#333232","show_locale_selector":true,"show_currency_selector":true}}},"content_for_index":[]}}
+{
+  "current": {
+    "accent_icons": "text",
+    "sections": {
+      "announcement-bar": {
+        "type": "announcement-bar",
+        "settings": {
+          "top_email": "email@domain.com",
+          "phone_number": "(12345)67890"
+        }
+      },
+      "header_new": {
+        "type": "header_new",
+        "blocks": {
+          "b448be10-ac24-40f8-a9d8-60182b0ca04d": {
+            "type": "mega_menu",
+            "settings": {
+              "menu_item": "Products",
+              "nav_promo_link": "shopify:\/\/collections",
+              "image_position": "right",
+              "newcollection": "best-selling-collection"
+            }
+          },
+          "3fa4aff9-f3cd-431c-b34e-8aaf77c67b0f": {
+            "type": "links_with_images",
+            "settings": {
+              "menu_item": "Blog",
+              "image_ratio": "natural",
+              "link_1": "",
+              "link_2": "",
+              "link_3": "shopify:\/\/blogs\/pets-calculator\/basenji-breed-information-photos-food-toys-and-supplement-information"
+            }
+          }
+        },
+        "block_order": [
+          "b448be10-ac24-40f8-a9d8-60182b0ca04d",
+          "3fa4aff9-f3cd-431c-b34e-8aaf77c67b0f"
+        ],
+        "settings": {
+          "carousel-heading": "",
+          "full_width_header": false,
+          "header_layout": "inline",
+          "floating_header": false,
+          "logo_max_width": 200,
+          "logo_max_width_mobile": 200,
+          "icons_only": false,
+          "search_layout": "modal",
+          "main_nav": "main-menu",
+          "nav_height": 40,
+          "linklist_breakpoint": 10
+        }
+      },
+      "footer": {
+        "type": "footer",
+        "blocks": {
+          "0621b8b8-6a03-4754-8452-93018789fe19": {
+            "type": "newsletter",
+            "settings": {
+              "title": "",
+              "address": "B-719, Noida One Building Noida Sec-62 Uttar Pradesh",
+              "address_heading": "Contact Info"
+            }
+          },
+          "e9abaf47-217e-46a4-9af2-517083d9400d": {
+            "type": "link_list",
+            "settings": {
+              "title": "Main Menu",
+              "menu": "footer"
+            }
+          },
+          "855bd9c8-fe7c-45d6-88a6-7e8cc36f1e80": {
+            "type": "link_list",
+            "settings": {
+              "title": "Pages",
+              "menu": ""
+            }
+          },
+          "f45c36a4-3da6-44aa-833f-3240e03e4126": {
+            "type": "link_list",
+            "settings": {
+              "title": "Customer Care",
+              "menu": ""
+            }
+          },
+          "0bb4cd46-f366-4b57-8b96-d73fe91a8d25": {
+            "type": "Image",
+            "settings": {
+            }
+          },
+          "c88fb4ac-86d8-48ac-9f50-cea2c650aab7": {
+            "type": "Image",
+            "settings": {
+            }
+          },
+          "2db588b8-6d4f-4fb6-ab2c-5b55547fc7ca": {
+            "type": "Image",
+            "settings": {
+            }
+          },
+          "2961bf65-f730-4c92-9048-6ace237f10b7": {
+            "type": "Image",
+            "settings": {
+            }
+          },
+          "1d8b9084-3ba1-4124-b5ad-7e32b193e930": {
+            "type": "Image",
+            "settings": {
+            }
+          },
+          "05dde35f-7049-452b-a240-d34c60d53cd4": {
+            "type": "Copyright",
+            "settings": {
+              "cp_text": "©Purple Ninja - All Rights Reserved"
+            }
+          },
+          "81df513b-0f9b-4964-aedb-b21a03aca361": {
+            "type": "Copyright",
+            "settings": {
+              "cp_text": "Owned & managed by Webninjaz Technology"
+            }
+          },
+          "af53a77d-e7da-4599-b2d4-00068db32512": {
+            "type": "Social",
+            "settings": {
+              "icon_name": "Facebook",
+              "icon": "<i class=\"fab fa-facebook-f\"><\/i>",
+              "Icon_url": ""
+            }
+          },
+          "09640cb1-25a7-43e6-8ced-5bab173a4872": {
+            "type": "Social",
+            "settings": {
+              "icon_name": "Instagram",
+              "icon": "<i class=\"fab fa-instagram\"><\/i>",
+              "Icon_url": ""
+            }
+          },
+          "ade306ee-9a4f-43e2-90a5-03a47c6e4359": {
+            "type": "Social",
+            "settings": {
+              "icon_name": "Twitter",
+              "icon": "<i class=\"fab fa-twitter\"><\/i>",
+              "Icon_url": ""
+            }
+          }
+        },
+        "block_order": [
+          "0621b8b8-6a03-4754-8452-93018789fe19",
+          "e9abaf47-217e-46a4-9af2-517083d9400d",
+          "855bd9c8-fe7c-45d6-88a6-7e8cc36f1e80",
+          "f45c36a4-3da6-44aa-833f-3240e03e4126",
+          "0bb4cd46-f366-4b57-8b96-d73fe91a8d25",
+          "c88fb4ac-86d8-48ac-9f50-cea2c650aab7",
+          "2db588b8-6d4f-4fb6-ab2c-5b55547fc7ca",
+          "2961bf65-f730-4c92-9048-6ace237f10b7",
+          "1d8b9084-3ba1-4124-b5ad-7e32b193e930",
+          "05dde35f-7049-452b-a240-d34c60d53cd4",
+          "81df513b-0f9b-4964-aedb-b21a03aca361",
+          "af53a77d-e7da-4599-b2d4-00068db32512",
+          "09640cb1-25a7-43e6-8ced-5bab173a4872",
+          "ade306ee-9a4f-43e2-90a5-03a47c6e4359"
+        ],
+        "settings": {
+          "show_payment_icons": false,
+          "color_footer_bg": "#f6f6f6",
+          "color_footer_text": "#333232",
+          "show_locale_selector": true,
+          "show_currency_selector": true
+        }
+      },
+      "drawer": {
+        "type": "drawer",
+        "settings": {
+        }
+      }
+    },
+    "content_for_index": [
+
+    ]
+  }
+}
