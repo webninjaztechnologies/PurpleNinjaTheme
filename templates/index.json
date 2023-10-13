@@ -39,44 +39,8 @@
         "86c5b114-0f48-40ed-9a1b-9dd47d4a8db4",
         "481b0555-6e2f-4949-b3da-96519fd522f7"
       ],
-      "disabled": true,
       "settings": {
         "back_image": "shopify:\/\/shop_images\/collection_banners_1_1_1.webp"
-      }
-    },
-    "c03d1def-45b3-4052-844e-bb8ee0fdbd45": {
-      "type": "slideshow",
-      "blocks": {
-        "1bf08594-53e1-4966-85c2-7551c40410ed": {
-          "type": "slide",
-          "settings": {
-            "image": "shopify:\/\/shop_images\/collection_banners_1_1_1.webp",
-            "heading": "Image slide",
-            "heading_size": "small",
-            "subheading": "Tell your brand's story through images",
-            "button_label": "Button label",
-            "link": "",
-            "button_style_secondary": false,
-            "box_align": "middle-center",
-            "show_text_box": true,
-            "text_alignment": "center",
-            "image_overlay_opacity": 0,
-            "color_scheme": "background-1",
-            "text_alignment_mobile": "center"
-          }
-        }
-      },
-      "block_order": [
-        "1bf08594-53e1-4966-85c2-7551c40410ed"
-      ],
-      "settings": {
-        "layout": "full_bleed",
-        "slide_height": "adapt_image",
-        "slider_visual": "counter",
-        "auto_rotate": false,
-        "change_slides_speed": 5,
-        "show_text_below": true,
-        "accessibility_info": "Slideshow about our brand"
       }
     },
     "featured-carousel": {
@@ -363,7 +327,6 @@
   },
   "order": [
     "hero-banner",
-    "c03d1def-45b3-4052-844e-bb8ee0fdbd45",
     "featured-carousel",
     "latest-product",
     "shopex-offer",
