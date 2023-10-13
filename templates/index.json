@@ -395,7 +395,8 @@
         "template--14752209338502__00aedf03-e6ce-4d0b-b78b-0e3daddfd048-featured_collection-3"
       ],
       "custom_css": [
-        ".full-unstyled-link {padding-left: 50px;}"
+        ".full-unstyled-link {padding-left: 50px;}",
+        ".title-wrapper--no-top-margin{display: flex; justify-content:center;}"
       ],
       "settings": {
         "title": "Cool Collections",
