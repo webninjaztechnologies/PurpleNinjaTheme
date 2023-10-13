@@ -43,7 +43,7 @@
       "type": "featured-carousel",
       "settings": {
         "title": "Featured Collections",
-        "collection": "black-crack",
+        "collection": "",
         "grid": 4,
         "rows": 2,
         "show_vendor": false,
