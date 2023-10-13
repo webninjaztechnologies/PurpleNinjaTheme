@@ -108,7 +108,8 @@
         "b38a021d-e594-41fb-aa71-1cbe9265c6f2"
       ],
       "custom_css": [
-        ".banner {padding: 0px;}"
+        ".banner {padding: 0px;}",
+        ".slider.slider--everywhere .slider__slide{margin-bottom: 0px !important;}"
       ],
       "settings": {
         "layout": "full_bleed",
