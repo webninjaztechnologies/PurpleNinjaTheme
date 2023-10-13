@@ -378,12 +378,6 @@
           "settings": {
             "collection": "before-sunset"
           }
-        },
-        "template--14752209338502__00aedf03-e6ce-4d0b-b78b-0e3daddfd048-featured_collection-3": {
-          "type": "featured_collection",
-          "settings": {
-            "collection": ""
-          }
         }
       },
       "block_order": [
@@ -391,13 +385,12 @@
         "cc2c9b20-24a1-4213-9f43-0da6b9f5a4c7",
         "ad0cda40-bd7f-40fc-bd5b-e22340f8555a",
         "template--14752209338502__00aedf03-e6ce-4d0b-b78b-0e3daddfd048-featured_collection-2",
-        "243406a8-cac2-4b76-80bf-96ee6a3dd6f0",
-        "template--14752209338502__00aedf03-e6ce-4d0b-b78b-0e3daddfd048-featured_collection-3"
+        "243406a8-cac2-4b76-80bf-96ee6a3dd6f0"
       ],
       "custom_css": [
         ".full-unstyled-link {padding-left: 50px;}",
         ".title-wrapper--no-top-margin {display: flex; justify-content: center;}",
-        ".collection-list-title{font-size: 42px; font-weight: 600;}"
+        ".collection-list-title {font-size: 42px; font-weight: 600;}"
       ],
       "settings": {
         "title": "Cool Collections",
