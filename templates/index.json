@@ -47,7 +47,7 @@
     "abe5025f-3c5e-42a5-bf9f-1bb771b5d4e1": {
       "type": "slideshow",
       "blocks": {
-        "template--14752209338502__abe5025f-3c5e-42a5-bf9f-1bb771b5d4e1-slide-2": {
+        "f5dc805d-bc80-4239-afb8-bcdb25a8c083": {
           "type": "slide",
           "settings": {
             "image": "shopify:\/\/shop_images\/collection_banners_1_1_1.webp",
@@ -85,7 +85,7 @@
         }
       },
       "block_order": [
-        "template--14752209338502__abe5025f-3c5e-42a5-bf9f-1bb771b5d4e1-slide-2",
+        "f5dc805d-bc80-4239-afb8-bcdb25a8c083",
         "37d3f4a2-7c8f-46ff-bf5f-09b4e8a0cba4"
       ],
       "settings": {
