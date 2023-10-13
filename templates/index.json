@@ -6,10 +6,11 @@
         "931eac74-85b2-49ac-a17f-e0f98194c47c": {
           "type": "block",
           "settings": {
-            "title": "New Furniture Collection  Trends in 2020",
-            "title_span": "Best Furniture For Your Castle....",
-            "sub_title": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Magna in est adipiscing in phasellus non in justo.",
-            "url": "shopify:\/\/collections\/all"
+            "title": "",
+            "title_span": "",
+            "sub_title": "",
+            "url": "shopify:\/\/collections\/all",
+            "image": "shopify:\/\/shop_images\/collection_banners_1_1_1.webp"
           }
         },
         "86c5b114-0f48-40ed-9a1b-9dd47d4a8db4": {
