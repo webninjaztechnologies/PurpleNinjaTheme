@@ -1,6 +1,6 @@
 {
   "current": {
-    "card_style": "standard",
+    "card_style": "card",
     "card_text_alignment": "left",
     "badge_position": "bottom left",
     "sale_badge_color_scheme": "accent-1",
