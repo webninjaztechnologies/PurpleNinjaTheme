@@ -8,7 +8,27 @@ class CartRemoveButton extends HTMLElement {
   }
 }
 
+
+// -----------------------------------------------------------------------------------
+const miniCart = document.getElementById('mini-cart');
+const closeCartButton = document.querySelector('.slideout__trigger-password');
+
+// Open the drawer
+function openDrawer() {
+  miniCart.style.right = '0';
+}
+
+// Close the drawer
+function closeDrawer() {
+  miniCart.style.right = '-300px';
+}
+
+// Add a click event listener to the close button
+closeCartButton.addEventListener('click', closeDrawer);
+
 customElements.define('cart-remove-button', CartRemoveButton);
+
+//-------------------------------------------------------------------------------------
 
 class CartItems extends HTMLElement {
   constructor() {

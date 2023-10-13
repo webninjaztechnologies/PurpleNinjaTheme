@@ -3,6 +3,26 @@
   display: block;
 }
 
+
+/*----------------------------------------------------------------------------*/
+
+#mini-cart {
+  position: fixed;
+  top: 0;
+  right: -300px; /* Start off the screen */
+  width: 300px; /* Set the desired width */
+  height: 100%;
+  background-color: #fff; /* Customize the background color */
+  transition: right 0.3s; /* Add a smooth sliding animation */
+}
+
+/* Style the close button within the drawer */
+.slideout__trigger-password {
+  cursor: pointer;
+}
+
+/*----------------------------------------------------------------------------*/
+
 .cart__empty-text,
 .is-empty .cart__contents,
 cart-items.is-empty .title-wrapper-with-link,
