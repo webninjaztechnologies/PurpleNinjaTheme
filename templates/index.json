@@ -98,7 +98,7 @@
       "type": "featured-carousel",
       "settings": {
         "title": "Featured Products",
-        "collection": "best-seller",
+        "collection": "black-crack",
         "grid": 4,
         "rows": 2,
         "show_vendor": false,
