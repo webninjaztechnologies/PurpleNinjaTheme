@@ -211,8 +211,8 @@
 				{% endcomment %}
           {% if settings.cart_type == 'page_only' %}
             <li class="cart-links__link-cart my-cart-link-container">
-              <!-- old code <a href="{{ routes.cart_url }}" class="header__icon header__icon--cart link focus-inset" id="cart-icon-bubble">
-                 <a href="#" class="header__icon header__icon--cart link focus-inset" id="cart-icon-bubble" data-drawer-trigger aria-controls="drawer-name" aria-expanded="false" >
+              <a href="{{ routes.cart_url }}" class="header__icon header__icon--cart link focus-inset" id="cart-icon-bubble">
+<!--              <a href="#" class="header__icon header__icon--cart link focus-inset" id="cart-icon-bubble" data-drawer-trigger aria-controls="drawer-name" aria-expanded="false" > -->
                 {%- liquid
                   if cart == empty
                     render 'icon-cart-empty'
@@ -229,13 +229,7 @@
                     <span class="visually-hidden">{{ 'sections.header.cart_count' | t: count: cart.item_count }}</span>
                   </div>
                 {%- endif -%}
-              </a> -->
-
-          <!-- new code -->
-
-          {% render 'eg-header-card-icon' %}}
-
-          
+              </a>
             </li>
           {% else %}
             <li class="cart-links__link-cart my-cart-link-container">
