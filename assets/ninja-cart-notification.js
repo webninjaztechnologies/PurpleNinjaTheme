@@ -31,19 +31,7 @@ class CartNotification extends HTMLElement {
     removeTrapFocus(this.activeElement);
   }
 
-  //------------------------------------------------------------------------------
-  // renderContents(parsedState) {
-  //     this.productId = parsedState.id;
-  //     this.getSectionsToRender().forEach((section => {
-  //       document.getElementById(section.id).innerHTML =
-  //         this.getSectionInnerHTML(parsedState.sections[section.id], section.selector);
-  //     }));
-
-  //     if (this.header) this.header.reveal();
-  //     this.open();
-  // }
-// --------------new code-----------------------------------------------------------------------
-   renderContents(parsedState) {
+  renderContents(parsedState) {
       this.productId = parsedState.id;
       this.getSectionsToRender().forEach((section => {
         document.getElementById(section.id).innerHTML =
@@ -51,10 +39,8 @@ class CartNotification extends HTMLElement {
       }));
 
       if (this.header) this.header.reveal();
-      // this.open();
-     loadEgCartDrawer(true);
+      this.open();
   }
-//--------------------------------------------------------------------------------------------------------
   getSectionsToRender() {
     return [
       {
