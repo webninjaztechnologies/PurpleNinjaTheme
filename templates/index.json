@@ -6,31 +6,31 @@
         "931eac74-85b2-49ac-a17f-e0f98194c47c": {
           "type": "block",
           "settings": {
-            "title": "",
-            "title_span": "",
-            "sub_title": "",
+            "title": "New Furniture Collection  Trends in 2020",
+            "title_span": "Best Furniture For Your Castle....",
+            "sub_title": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Magna in est adipiscing in phasellus non in justo.",
             "url": "shopify:\/\/collections\/all",
-            "image": "shopify:\/\/shop_images\/collection_banners_1_1_1.webp"
+            "image": "shopify:\/\/shop_images\/sofa-promotional-header.png"
           }
         },
         "86c5b114-0f48-40ed-9a1b-9dd47d4a8db4": {
           "type": "block",
-          "disabled": true,
           "settings": {
             "title": "MEN COLLECTION",
             "title_span": "MEN COLLECTION",
             "sub_title": "MEN COLLECTION",
-            "url": "shopify:\/\/collections\/all"
+            "url": "shopify:\/\/collections\/all",
+            "image": "shopify:\/\/shop_images\/italian-sofa.png"
           }
         },
         "481b0555-6e2f-4949-b3da-96519fd522f7": {
           "type": "block",
-          "disabled": true,
           "settings": {
             "title": "New Furniture Collection  Trends in 2020",
             "title_span": "Best Furniture For Your Castle....",
             "sub_title": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Magna in est adipiscing in phasellus non in justo.",
-            "url": "shopify:\/\/collections\/all"
+            "url": "shopify:\/\/collections\/all",
+            "image": "shopify:\/\/shop_images\/sofa-promotional-header.png"
           }
         }
       },
@@ -39,93 +39,14 @@
         "86c5b114-0f48-40ed-9a1b-9dd47d4a8db4",
         "481b0555-6e2f-4949-b3da-96519fd522f7"
       ],
-      "disabled": true,
       "settings": {
-        "back_image": "shopify:\/\/shop_images\/collection_banners_3_1.webp"
-      }
-    },
-    "abe5025f-3c5e-42a5-bf9f-1bb771b5d4e1": {
-      "type": "slideshow",
-      "blocks": {
-        "f5dc805d-bc80-4239-afb8-bcdb25a8c083": {
-          "type": "slide",
-          "settings": {
-            "image": "shopify:\/\/shop_images\/collection_banners_1_1_1.webp",
-            "heading": "",
-            "heading_size": "medium",
-            "subheading": "",
-            "button_label": "",
-            "link": "",
-            "button_style_secondary": false,
-            "box_align": "middle-center",
-            "show_text_box": false,
-            "text_alignment": "center",
-            "image_overlay_opacity": 0,
-            "color_scheme": "background-1",
-            "text_alignment_mobile": "center"
-          }
-        },
-        "37d3f4a2-7c8f-46ff-bf5f-09b4e8a0cba4": {
-          "type": "slide",
-          "settings": {
-            "image": "shopify:\/\/shop_images\/collection_banners_3_1.webp",
-            "heading": "",
-            "heading_size": "medium",
-            "subheading": "",
-            "button_label": "",
-            "link": "",
-            "button_style_secondary": false,
-            "box_align": "middle-center",
-            "show_text_box": false,
-            "text_alignment": "center",
-            "image_overlay_opacity": 0,
-            "color_scheme": "background-1",
-            "text_alignment_mobile": "center"
-          }
-        },
-        "b38a021d-e594-41fb-aa71-1cbe9265c6f2": {
-          "type": "slide",
-          "settings": {
-            "image": "shopify:\/\/shop_images\/Layers_3_new_skin_banner_1.webp",
-            "heading": "",
-            "heading_size": "medium",
-            "subheading": "",
-            "button_label": "",
-            "link": "",
-            "button_style_secondary": false,
-            "box_align": "middle-center",
-            "show_text_box": false,
-            "text_alignment": "center",
-            "image_overlay_opacity": 0,
-            "color_scheme": "background-1",
-            "text_alignment_mobile": "center"
-          }
-        }
-      },
-      "block_order": [
-        "f5dc805d-bc80-4239-afb8-bcdb25a8c083",
-        "37d3f4a2-7c8f-46ff-bf5f-09b4e8a0cba4",
-        "b38a021d-e594-41fb-aa71-1cbe9265c6f2"
-      ],
-      "custom_css": [
-        ".banner {padding: 0px;}",
-        ".slider.slider--everywhere .slider__slide {margin-bottom: 0px !important;}"
-      ],
-      "settings": {
-        "layout": "full_bleed",
-        "slide_height": "large",
-        "slider_visual": "counter",
-        "auto_rotate": false,
-        "change_slides_speed": 5,
-        "show_text_below": true,
-        "accessibility_info": "Slideshow about our brand"
       }
     },
     "featured-carousel": {
       "type": "featured-carousel",
       "settings": {
-        "title": "Featured Collections",
-        "collection": "black-crack",
+        "title": "Featured Products",
+        "collection": "best-seller",
         "grid": 4,
         "rows": 2,
         "show_vendor": false,
@@ -134,26 +55,10 @@
     },
     "latest-product": {
       "type": "latest-product",
-      "blocks": {
-        "db2b0252-5acd-4744-a079-4aa464044c87": {
-          "type": "custom-text",
-          "settings": {
-            "feature_collection": "",
-            "collection1": "",
-            "collection2": "",
-            "collection3": "",
-            "collection4": ""
-          }
-        }
-      },
-      "block_order": [
-        "db2b0252-5acd-4744-a079-4aa464044c87"
-      ],
-      "disabled": true,
       "settings": {
-        "feature_collection": "astro-rainbow",
-        "best_seller": "black-crack",
-        "featured": "golden-siri",
+        "feature_collection": "featured-product",
+        "best_seller": "best-seller",
+        "featured": "featured",
         "spacial_offer": ""
       }
     },
@@ -163,6 +68,7 @@
         "9d20ee4b-9eb3-411d-956d-b72635134d2b": {
           "type": "text",
           "settings": {
+            "image": "shopify:\/\/shop_images\/free-delivery.png",
             "shopex-title": "Free standard shipping on all orders.",
             "product-desc": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Massa purus gravida."
           }
@@ -170,6 +76,7 @@
         "e8ab2e5a-c21f-4d64-a70a-84914487b0ed": {
           "type": "text",
           "settings": {
+            "image": "shopify:\/\/shop_images\/cashback.png",
             "shopex-title": "Best Quality Products",
             "product-desc": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Massa purus gravida."
           }
@@ -177,6 +84,7 @@
         "554b67a0-2d79-46d2-a8ef-a6e61b200296": {
           "type": "text",
           "settings": {
+            "image": "shopify:\/\/shop_images\/premium-quality.png",
             "shopex-title": "Affordable Price",
             "product-desc": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Massa purus gravida."
           }
@@ -184,6 +92,7 @@
         "9ee8a9ba-e62e-4f94-bb39-6c77eb07776f": {
           "type": "text",
           "settings": {
+            "image": "shopify:\/\/shop_images\/24-hours-support.png",
             "shopex-title": "24\/7 Support",
             "product-desc": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Massa purus gravida."
           }
@@ -195,7 +104,6 @@
         "554b67a0-2d79-46d2-a8ef-a6e61b200296",
         "9ee8a9ba-e62e-4f94-bb39-6c77eb07776f"
       ],
-      "disabled": true,
       "settings": {
       }
     },
@@ -226,7 +134,6 @@
         "81235fa3-9ee1-4dbb-ad7a-7b2b531ac50c",
         "941219cb-acc3-4a0b-9a9d-3df308c2a164"
       ],
-      "disabled": true,
       "settings": {
         "hero_heading": "",
         "collection": ""
@@ -234,7 +141,6 @@
     },
     "trending-product": {
       "type": "trending-product",
-      "disabled": true,
       "settings": {
         "trending_collection": "trending-collection",
         "trending_collection1": "trending-item"
@@ -274,7 +180,6 @@
         "f0060467-c8be-4ce6-a68c-0d94b41713ad",
         "4c8048b5-3d62-469c-bcf8-b5d70edcdfc7"
       ],
-      "disabled": true,
       "settings": {
         "hero_heading": "Discount Item",
         "wood_disc_text": "20% Discount On This Products",
@@ -284,7 +189,6 @@
     },
     "top-category": {
       "type": "top-category",
-      "disabled": true,
       "settings": {
         "top_category": "top-category"
       }
@@ -295,26 +199,31 @@
         "bfb267b0-e432-4a2b-ae4d-ef8d136899fc": {
           "type": "Image",
           "settings": {
+            "image": "shopify:\/\/shop_images\/f-img1.png"
           }
         },
         "a6c92693-906b-4300-b23b-d5bffa2918dd": {
           "type": "Image",
           "settings": {
+            "image": "shopify:\/\/shop_images\/f-img2.png"
           }
         },
         "84eefef1-63ca-4bb6-9dc3-cfcecf733294": {
           "type": "Image",
           "settings": {
+            "image": "shopify:\/\/shop_images\/f-img-3.png"
           }
         },
         "e1ec2616-a568-4a48-a8c0-26fa416f89a0": {
           "type": "Image",
           "settings": {
+            "image": "shopify:\/\/shop_images\/f-img4.png"
           }
         },
         "7725cfc2-ee8e-4d7a-ba4c-b52144bd2d49": {
           "type": "Image",
           "settings": {
+            "image": "shopify:\/\/shop_images\/f-img5.png"
           }
         }
       },
@@ -327,12 +236,12 @@
       ],
       "disabled": true,
       "settings": {
-        "trending_collection": "Get Leatest Update By Subscribe 0ur Newslater"
+        "trending_collection": "Get Leatest Update By Subscribe 0ur Newslater",
+        "image": "shopify:\/\/shop_images\/brand.png"
       }
     },
     "164907174385675f32": {
       "type": "featured-blog",
-      "disabled": true,
       "settings": {
         "heading": "Latest Blog",
         "blog": "pets-calculator",
@@ -345,67 +254,10 @@
         "padding_top": 36,
         "padding_bottom": 36
       }
-    },
-    "00aedf03-e6ce-4d0b-b78b-0e3daddfd048": {
-      "type": "collection-list",
-      "blocks": {
-        "template--14752209338502__00aedf03-e6ce-4d0b-b78b-0e3daddfd048-featured_collection-1": {
-          "type": "featured_collection",
-          "settings": {
-            "collection": "black-crack"
-          }
-        },
-        "cc2c9b20-24a1-4213-9f43-0da6b9f5a4c7": {
-          "type": "featured_collection",
-          "settings": {
-            "collection": "concrete-rock"
-          }
-        },
-        "ad0cda40-bd7f-40fc-bd5b-e22340f8555a": {
-          "type": "featured_collection",
-          "settings": {
-            "collection": "golden-siri"
-          }
-        },
-        "template--14752209338502__00aedf03-e6ce-4d0b-b78b-0e3daddfd048-featured_collection-2": {
-          "type": "featured_collection",
-          "settings": {
-            "collection": "astro-rainbow"
-          }
-        },
-        "243406a8-cac2-4b76-80bf-96ee6a3dd6f0": {
-          "type": "featured_collection",
-          "settings": {
-            "collection": "before-sunset"
-          }
-        }
-      },
-      "block_order": [
-        "template--14752209338502__00aedf03-e6ce-4d0b-b78b-0e3daddfd048-featured_collection-1",
-        "cc2c9b20-24a1-4213-9f43-0da6b9f5a4c7",
-        "ad0cda40-bd7f-40fc-bd5b-e22340f8555a",
-        "template--14752209338502__00aedf03-e6ce-4d0b-b78b-0e3daddfd048-featured_collection-2",
-        "243406a8-cac2-4b76-80bf-96ee6a3dd6f0"
-      ],
-      "custom_css": [
-        ".full-unstyled-link {padding-left: 50px;}",
-        ".title-wrapper--no-top-margin {display: flex; justify-content: center;}",
-        ".collection-list-title {font-size: 42px; font-weight: 600;}"
-      ],
-      "settings": {
-        "title": "Cool Collections",
-        "image_ratio": "portrait",
-        "color_scheme": "background-1",
-        "swipe_on_mobile": false,
-        "show_view_all": false,
-        "padding_top": 36,
-        "padding_bottom": 36
-      }
     }
   },
   "order": [
     "hero-banner",
-    "abe5025f-3c5e-42a5-bf9f-1bb771b5d4e1",
     "featured-carousel",
     "latest-product",
     "shopex-offer",
@@ -414,7 +266,6 @@
     "discount-item",
     "top-category",
     "newsletter-section",
-    "164907174385675f32",
-    "00aedf03-e6ce-4d0b-b78b-0e3daddfd048"
+    "164907174385675f32"
   ]
 }
