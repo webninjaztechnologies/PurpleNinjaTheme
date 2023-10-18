@@ -136,7 +136,7 @@
       "type": "featured-carousel",
       "settings": {
         "title": "Featured Products",
-        "collection": "black-crack-apple",
+        "collection": "black-crack",
         "grid": 4,
         "rows": 2,
         "show_vendor": false,
@@ -381,7 +381,7 @@
         "template--14752209338502__d3ad165c-de07-408f-8af5-11e8a80b47bc-featured_collection-3": {
           "type": "featured_collection",
           "settings": {
-            "collection": "black-crack-apple"
+            "collection": "black-crack"
           }
         },
         "3349e84b-2ff8-44f3-8273-195ae1950e30": {
